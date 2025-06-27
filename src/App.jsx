@@ -5,24 +5,60 @@ import Sign from "./authentication/Sign";
 import Cart from "./components/Cart";
 import NotFound from "./page/NotFound";
 import { ProductData } from "./api/api";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import AllProductsPage from "./page/AllProductsPage";
+import Registration from "./authentication/Registration";
+import { User } from "./redux/appSlice";
+import { useEffect } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth"; 
+import { useDispatch } from "react-redux"; 
+import ProductDetails from "./page/ProductDetails";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      {/* route=> fixed */}
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} loader={ProductData}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="*" element={<NotFound />}></Route>
+        <Route index element={<Home />} loader={ProductData} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/AllProductsPage" element={<AllProductsPage />} loader={ProductData} />
+        <Route path="*" element={<NotFound />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
       </Route>
-      {/* route=> variable */}
-      <Route path="/sign" element={<Sign />}></Route>
+
+      <Route path="/Registration" element={<Registration />} />
+      <Route path="/Sign" element={<Sign />} />
     </Route>
   )
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(
+          User({
+            __id: user.uid,
+            userName: user.displayName,
+            email: user.email,
+          })
+        );
+      }
+    });
+
+    //  Cleanup
+    return () => unsubscribe();
+  }, [dispatch]);
+
+  return (
+    <>
+      <RouterProvider router={router} />
+      <ToastContainer position="bottom-right" autoClose={3000} />
+    </>
+  );
 };
 
 export default App;

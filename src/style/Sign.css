@@ -1,0 +1,141 @@
+/* مركز الصفحة */
+.signin-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #f4f6f8;
+}
+
+/* تصميم الفورم */
+.signin-form {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.signin-form h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
+}
+
+.signin-form p {
+  margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  transition: border 0.3s;
+}
+
+.input-group:focus-within {
+  border-color: #2575fc;
+}
+
+.input-group label {
+  margin-right: 10px;
+  color: #666;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 14px;
+  color: #333;
+}
+
+/* مجموعة الباسورد */
+.password-group {
+  position: relative;
+}
+
+/* أيقونة إظهار/إخفاء الباسورد */
+.toggle-password {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+
+/* زر تسجيل الدخول */
+.submit-btn {
+  width: 100%;
+  background-color: #2575fc;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #1a5edc;
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* رابط التسجيل */
+.register-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #2575fc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: text-decoration 0.3s;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* رسائل الخطأ (لو هتستخدمها لاحقًا) */
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

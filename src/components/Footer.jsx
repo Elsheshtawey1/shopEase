@@ -1,9 +1,68 @@
-import React from 'react'
+import React from "react";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import "../style/Footer.css";
+import Container from "./Container";
 
 const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <footer className="footer">
+      <Container>
+        <div className="footer-main">
+          <div className="footer-column">
+            <h4>About Us</h4>
+            <ul>
+              <li>Company Info</li>
+              <li>Careers</li>
+              <li>Press</li>
+              <li>Blog</li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Customer Service</h4>
+            <ul>
+              <li>Contact Us</li>
+              <li>Returns</li>
+              <li>FAQs</li>
+              <li>Shipping Info</li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Shop</h4>
+            <ul>
+              <li>Men</li>
+              <li>Women</li>
+              <li>Electronics</li>
+              <li>Home & Garden</li>
+            </ul>
+          </div>
+          <div className="footer-column">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="#">
+                <FaFacebookF />
+              </a>
+              <a href="#">
+                <FaInstagram />
+              </a>
+              <a href="#">
+                <FaTwitter />
+              </a>
+              <a href="#">
+                <FaYoutube />
+              </a>
+            </div>
+          </div>
+        </div>
 
-export default Footer
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} YourStore. All rights reserved.elsheshtawey</p>
+          <p>
+            for more information, contact us 
+          </p>
+        </div>
+      </Container>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,10 +1,60 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ----------------- 1. Offer Bar ----------------- */
+.offer-bar {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 0.4rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 999;
 }
 
-/* Navbar Container */
+.animated-offer {
+  margin: 0;
+  animation: typing 3s steps(40, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.social-icons a {
+  background-color: white;
+  color: #ff4d4f;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.social-icons a:hover {
+  background-color: #000;
+  color: white;
+}
+
+/* ----------------- 2. Navbar ----------------- */
 .navbar {
   width: 100%;
   background-color: #ffffff;
@@ -19,12 +69,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  max-width: 1400px;
   margin: auto;
   flex-wrap: wrap;
 }
 
-/* Logo */
 .logo {
   font-size: 24px;
   font-weight: bold;
@@ -32,7 +80,7 @@
   flex-shrink: 0;
 }
 
-/* Navigation Links */
+/* ----------------- 3. Navigation Links ----------------- */
 .nav-links {
   display: flex;
   align-items: center;
@@ -42,7 +90,33 @@
   position: relative;
 }
 
-/* Search Bar */
+.nav-item {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  position: relative;
+  transition: 0.2s;
+}
+
+.nav-item:hover {
+  color: #007bff;
+}
+
+.nav-item.active {
+  color: #007bff;
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #007bff;
+}
+
+/* ----------------- 4. Search Bar ----------------- */
 .search-bar {
   position: relative;
   width: 250px;
@@ -88,39 +162,11 @@
   background-color: #0056b3;
 }
 
-/* Nav Item */
-.nav-item {
-  text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  position: relative;
-  transition: 0.2s;
-}
-
-.nav-item:hover {
-  color: #007bff;
-}
-
-/* Active Nav Item */
-.nav-item.active {
-  color: #007bff;
-}
-
-.nav-item.active::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -4px;
-  left: 0;
-  background-color: #007bff;
-}
-
-/* Right Icons */
+/* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
   flex-shrink: 0;
 }
 
@@ -128,15 +174,52 @@
   font-size: 20px;
   color: #333;
   cursor: pointer;
+  padding: 0 10px;
 }
 
+/* Username next to user icon */
 .username {
-  font-weight: 500;
-  color: #007bff;
-  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  border-radius: 20px;
+  background-color: #0596ea;
+  padding: 6px;
+  align-items: center;
 }
 
-/* Hamburger Menu */
+/* Logout Button Styled as Icon */
+.logout-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 10px;
+  color: #333;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+  color: #f44336;
+  transform: scale(1.1);
+}
+
+/* Cart count bubble */
+.cart-count {
+  background-color: #f44336;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  position: relative;
+  top: -15px;
+  right: 12px;
+}
+
+/* ----------------- 6. Menu Toggle ----------------- */
 .menu-toggle {
   font-size: 24px;
   cursor: pointer;
@@ -144,7 +227,7 @@
   color: #333;
 }
 
-/* Responsive */
+/* ----------------- 7. Responsive ----------------- */
 @media (max-width: 768px) {
   .navbar-container {
     flex-wrap: nowrap;
@@ -169,26 +252,82 @@
 
   .search-bar {
     width: 100%;
-    margin: 0 0 0 10px;
-  }
-
-  .search-button {
-    right: 10px;
-  }
-
-  .menu-toggle {
-    display: block;
+    margin-left: 10px;
   }
 
   .search-button {
     right: -1px;
   }
 
+  .menu-toggle {
+    display: block;
+  }
 }
 
-@media (min-width: 768px) and (max-width: 955px) {
+@media (min-width: 768px) and (max-width: 1220px) {
   .search-bar {
     width: 200px;
-    margin: 0 0 0 10px;
+    margin-left: 10px;
+    display: none;
   }
+}
+
+@media (max-width: 600px) {
+  .offer-bar {
+    font-size: 0.9rem;
+    flex-direction: column;
+    padding: 0.2rem 1rem;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 0.6rem;
+    padding: 5px 0;
+  }
+
+  .social-icons a {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+
+  .icon {
+    padding: 0;
+    align-items: center;
+    font-size: 18px;
+    display: flex;
+  }
+
+  .username {
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 12px;
+    border-radius: 10px;
+    padding: 5px;
+
+  }
+
+  .username span {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-links {
+    top: 54px;
+    border-radius: 0 0 10px 10px;
+  }
+    .right-icons{
+    gap: 20px;
+    align-items: center;
+    
+    }
+}
+@media (min-width: 350px) and (max-width: 450px) {
+
+  .navbar-container{
+    padding: 10px 2px;
+  }
+    .right-icons{
+    gap: 0px;
+    }
 }
