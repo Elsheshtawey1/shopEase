@@ -1,21 +1,25 @@
-// Import the functions you need from the SDKs you need
+
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"; 
-// Firebase config
+import { getAuth } from "firebase/auth";
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB-jokI-mnMhbyPVugyHUu97A0Ct8xKS58",
-  authDomain: "ecommerce-app-6f9a4.firebaseapp.com",
-  projectId: "ecommerce-app-6f9a4",
-  storageBucket: "ecommerce-app-6f9a4.firebasestorage.app",
-  messagingSenderId: "793227885546",
-  appId: "1:793227885546:web:a6b56149f2e5ae6cdb9093",
-  measurementId: "G-2Z7PV4DZQW",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
-const Analytics = getAnalytics(app);
+const analytics = getAnalytics(app);
 const auth = getAuth(app);
+
+
 export default app;
-export { Analytics, auth };
+export { analytics, auth };
