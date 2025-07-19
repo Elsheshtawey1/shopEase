@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; 
 import { useDispatch } from "react-redux"; 
 import ProductDetails from "./page/ProductDetails";
+import Proceed from "./page/Proceed";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
         <Route path="/AllProductsPage" element={<AllProductsPage />} loader={ProductData} />
         <Route path="*" element={<NotFound />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/Proceed" element={<Proceed />} />
       </Route>
 
       <Route path="/Registration" element={<Registration />} />

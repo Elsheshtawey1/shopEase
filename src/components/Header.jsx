@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiUser, FiShoppingCart, FiHeart, FiMenu, FiX, FiSearch } from "react-icons/fi";
-import { FaFacebookF, FaTwitter, FaInstagram,} from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import "../style/NavBar.css";
 import Container from "./Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
-import { toast } from "react-toastify";
 import { logoutUser } from "../redux/appSlice";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 const Navbar = () => {
-  const dispatch =useDispatch();
+  const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -40,11 +39,14 @@ const Navbar = () => {
           });
         }
       })
-      .catch((error) => {
-        // An error happened.
-        toast.error(error.message);
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+        });
       });
-  }
+  };
   return (
     <>
       <div className="offer-bar">

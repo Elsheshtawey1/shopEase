@@ -1,10 +1,18 @@
-import React, { useEffect, useState, } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import "../style/Banner.css";
 import Container from "./Container";
+
 const BannerSwitcher = () => {
   const [mainImage, setMainImage] = useState("/img/second_slider.b9288b4081970efae138.png");
   const [sideImages, setSideImages] = useState(["/img/baner.png", "/img/third_slide.c362b5de2e9c9591c741.jpg"]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = mainImage;
+    img.onload = () => setLoading(false);
+  }, [mainImage]);
 
   const handleSwap = (index) => {
     const newMain = sideImages[index];
@@ -12,6 +20,7 @@ const BannerSwitcher = () => {
     newSides[index] = mainImage;
     setMainImage(newMain);
     setSideImages(newSides);
+    setLoading(true); 
   };
 
   const handleNext = () => {
@@ -19,6 +28,7 @@ const BannerSwitcher = () => {
     const newSides = [...sideImages.slice(1), mainImage];
     setMainImage(newMain);
     setSideImages(newSides);
+    setLoading(true); 
   };
 
   const handlePrev = () => {
@@ -26,20 +36,26 @@ const BannerSwitcher = () => {
     const newSides = [mainImage, ...sideImages.slice(0, -1)];
     setMainImage(newMain);
     setSideImages(newSides);
+    setLoading(true); 
   };
+
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext();
-    }, 3000); // Change image every 5 seconds
+      const newMain = sideImages[0];
+      const newSides = [...sideImages.slice(1), mainImage];
+      setMainImage(newMain);
+      setSideImages(newSides);
+    }, 5000); 
 
-    return () => clearInterval(interval); 
-  })
+    return () => clearInterval(interval);
+  }, [sideImages, mainImage]);
+  
   return (
     <Container>
-      {" "}
       <div className="banner-section">
         <div className="main-banner">
-          <img src={mainImage} alt="Main" />
+          {loading ? <div className="skeleton-banner" /> : <img src={mainImage} alt="Main" loading="eager" />}
+
           <button className="arrow left" onClick={handlePrev}>
             <FiChevronLeft />
           </button>

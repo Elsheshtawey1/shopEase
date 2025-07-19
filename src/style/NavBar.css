@@ -1,7 +1,7 @@
 /* ----------------- 1. Offer Bar ----------------- */
 .offer-bar {
-  background-color: #ff4d4f;
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-card);
   padding: 0.4rem 1.2rem;
   display: flex;
   justify-content: space-between;
@@ -17,7 +17,7 @@
   animation: typing 3s steps(40, end) forwards;
   white-space: nowrap;
   overflow: hidden;
-  border-right: 2px solid white;
+  border-right: 2px solid var(--color-card);
   width: 0;
 }
 
@@ -37,10 +37,10 @@
 }
 
 .social-icons a {
-  background-color: white;
-  color: #ff4d4f;
-  width: 28px;
-  height: 28px;
+  background-color: var(--color-card);
+  color: var(--color-accent);
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,15 +50,15 @@
 }
 
 .social-icons a:hover {
-  background-color: #000;
-  color: white;
+  background-color: var(--text-primary);
+  color: var(--color-card);
 }
 
 /* ----------------- 2. Navbar ----------------- */
 .navbar {
   width: 100%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-card);
+  box-shadow: 0 2px 5px var(--color-shadow);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -68,15 +68,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.6rem 1.25rem;
   margin: auto;
   flex-wrap: wrap;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-primary);
   flex-shrink: 0;
 }
 
@@ -84,7 +84,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 1.25rem;
   flex-grow: 1;
   justify-content: center;
   position: relative;
@@ -92,18 +92,15 @@
 
 .nav-item {
   text-decoration: none;
-  color: #555;
+  color: var(--text-secondary);
   font-weight: 500;
   position: relative;
-  transition: 0.2s;
+  transition: 0.2s ease;
 }
 
-.nav-item:hover {
-  color: #007bff;
-}
-
+.nav-item:hover,
 .nav-item.active {
-  color: #007bff;
+  color: var(--color-primary);
 }
 
 .nav-item.active::after {
@@ -113,7 +110,7 @@
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #007bff;
+  background-color: var(--color-primary);
 }
 
 /* ----------------- 4. Search Bar ----------------- */
@@ -126,18 +123,19 @@
 
 .search-bar input {
   width: 100%;
-  padding: 10px 5px 9px 15px;
-  padding-right: 40px;
-  border: 2px solid #ccc;
-  border-radius: 25px;
-  outline: none;
+  padding: 0.6rem 1rem;
+  padding-right: 2.5rem;
+  border: 2px solid var(--color-border);
+  border-radius: 2rem;
+  background-color: var(--color-card);
+  color: var(--text-primary);
   transition: 0.3s ease;
 }
 
 .search-bar input:hover,
 .search-bar input:focus {
-  border-color: #007bff;
-  background-color: #f0f8ff;
+  border-color: var(--color-primary);
+  background-color: var(--color-background);
 }
 
 .search-button {
@@ -145,12 +143,12 @@
   right: 1px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #007bff;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-card);
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 2.25rem;
+  height: 2.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -159,36 +157,35 @@
 }
 
 .search-button:hover {
-  background-color: #0056b3;
+  background-color: var(--color-primary-dark);
 }
 
 /* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.5rem;
   flex-shrink: 0;
 }
 
 .icon {
-  font-size: 20px;
-  color: #333;
+  font-size: 1.25rem;
+  color: var(--text-primary);
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 0.6rem;
 }
 
 /* Username next to user icon */
 .username {
-  font-weight: bold;
-  color: #333;
-  margin-left: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s ease, transform 0.2s ease;
-  border-radius: 20px;
-  background-color: #0596ea;
-  padding: 6px;
+  font-weight: 600;
+  color: var(--color-card);
+  font-size: 0.9rem;
+  background-color: var(--color-primary);
+  padding: 0.4rem 0.6rem;
+  border-radius: 1.25rem;
+  display: flex;
   align-items: center;
+  transition: 0.3s ease;
 }
 
 /* Logout Button Styled as Icon */
@@ -196,35 +193,35 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 20px;
-  padding: 0 10px;
-  color: #333;
+  font-size: 1.25rem;
+  padding: 0 0.6rem;
+  color: var(--text-primary);
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .logout-button:hover {
-  color: #f44336;
+  color: var(--color-error);
   transform: scale(1.1);
 }
 
 /* Cart count bubble */
 .cart-count {
-  background-color: #f44336;
-  color: white;
+  background-color: var(--color-error);
+  color: var(--color-card);
   border-radius: 50%;
-  padding: 2px 6px;
-  font-size: 12px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
   position: relative;
-  top: -15px;
-  right: 12px;
+  top: -0.9rem;
+  right: 0.75rem;
 }
 
 /* ----------------- 6. Menu Toggle ----------------- */
 .menu-toggle {
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
   display: none;
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* ----------------- 7. Responsive ----------------- */
@@ -237,12 +234,12 @@
     display: none;
     flex-direction: column;
     align-items: stretch;
-    background-color: #f9f9f9;
+    background-color: var(--color-background);
     position: absolute;
     top: 50px;
     left: 0;
     width: 100%;
-    padding: 15px 20px;
+    padding: 1rem 1.25rem;
     z-index: 999;
   }
 
@@ -252,7 +249,7 @@
 
   .search-bar {
     width: 100%;
-    margin-left: 10px;
+    margin-left: 0.5rem;
   }
 
   .search-button {
@@ -280,54 +277,44 @@
   }
 
   .social-icons {
-    display: flex;
     gap: 0.6rem;
     padding: 5px 0;
   }
 
   .social-icons a {
-    width: 25px;
-    height: 25px;
+    width: 1.6rem;
+    height: 1.6rem;
     font-size: 1rem;
   }
 
   .icon {
     padding: 0;
-    align-items: center;
-    font-size: 18px;
-    display: flex;
+    font-size: 1.1rem;
   }
 
   .username {
     font-weight: 400;
-    margin-left: 5px;
-    font-size: 12px;
-    border-radius: 10px;
-    padding: 5px;
-
-  }
-
-  .username span {
-    align-items: center;
-    display: flex;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.75rem;
   }
 
   .nav-links {
     top: 54px;
     border-radius: 0 0 10px 10px;
   }
-    .right-icons{
-    gap: 20px;
-    align-items: center;
-    
-    }
-}
-@media (min-width: 350px) and (max-width: 450px) {
 
-  .navbar-container{
+  .right-icons {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .navbar-container {
     padding: 10px 2px;
   }
-    .right-icons{
-    gap: 0px;
-    }
+
+  .right-icons {
+    gap: 0;
+  }
 }

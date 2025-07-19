@@ -25,7 +25,7 @@ const Sign = () => {
     const auth = getAuth();
 
     try {
-// save user session in local storage
+      // save user session in local storage
       await setPersistence(auth, browserLocalPersistence);
       // login user with email and password
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
@@ -50,7 +50,7 @@ const Sign = () => {
       });
 
       navigate("/");
-    } catch (error) {
+    } catch {
       await Swal.fire({
         title: "Sign In Error",
         text: "Please check your email and password.",

@@ -32,7 +32,6 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
     );
   if (isError) return <div className="loading-message">Error: {error.message}</div>;
 
-  // ✅ تحقق من أن البيانات مصفوفة قبل استخدام .map
   const displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
 
   return (

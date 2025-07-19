@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../style/Registration.css";
 import { FaEye, FaEyeSlash, FaEnvelope, FaFacebookF, FaGoogle, FaLock, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -7,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import Swal from "sweetalert2";
 import GoogleLoginButton from "../components/GoogleLoginButton"
+import "../style/Registration.css";
 function Registration() {
   const navigate = useNavigate();
   const auth = getAuth();
@@ -58,7 +58,7 @@ function Registration() {
 
       resetForm();
       navigate("/Sign");
-    } catch (error) {
+    } catch  {
       await Swal.fire({
         icon: "error",
         title: "Registration Failed",
