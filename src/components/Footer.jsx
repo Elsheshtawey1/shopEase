@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import "../style/Footer.css";
 import Container from "./Container";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -20,9 +21,15 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Customer Service</h4>
             <ul>
-              <li>Contact Us</li>
+              <li>
+                <Link to="/contact">Contact Us</Link>
+              </li>
               <li>Returns</li>
-              <li>FAQs</li>
+              <li>
+                <Link to="/faq" className="faq-Footer">
+                  FAQs
+                </Link>
+              </li>
               <li>Shipping Info</li>
             </ul>
           </div>
@@ -56,9 +63,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} YourStore. All rights reserved.elsheshtawey</p>
-          <p>
-            for more information, contact us 
-          </p>
+          <p>for more information, contact us</p>
         </div>
       </Container>
     </footer>

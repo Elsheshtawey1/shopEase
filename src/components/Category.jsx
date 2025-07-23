@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../style/Category.css";
 import Container from "./Container";
 import { useQuery } from "@tanstack/react-query";
-import { ProductData } from "../api/api"; 
+import { ProductData } from "../api/api";
 import ProductSkeleton from "./ProductSkeleton";
 
 function Category() {
@@ -18,11 +18,13 @@ function Category() {
 
   const [hovered, setHovered] = useState(null);
 
-  if (isLoading) return (
-    <p className="loading-message">
-      <ProductSkeleton count={8} />
-    </p>
-  );
+  if (isLoading)
+    return (
+      <div className="loading-message">
+        <ProductSkeleton count={8} />
+      </div>
+    );
+
   if (isError) return <p className="error-message">Error: {error.message}</p>;
 
   const products = Array.isArray(rawProducts) ? rawProducts : [];

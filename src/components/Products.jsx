@@ -49,12 +49,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
         <div className="products-grid">
           {displayedProducts.map((product) => (
             <div key={product.id} className="product-card">
-              <Link to={`/product/${product.id}`} className="product-link">
-                <div className="product-image-wrapper">
-                  <img src={product.image} alt={product.title} className="product-image" />
-                </div>
-              </Link>
-
+              {/* Cart Button */}
               <button
                 onClick={() => {
                   dispatch(
@@ -78,6 +73,12 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
               >
                 <FaShoppingCart />
               </button>
+
+              <Link to={`/product/${product.id}`} className="product-link">
+                <div className="product-image-wrapper">
+                  <img src={product.image} alt={product.title} className="product-image" />
+                </div>
+              </Link>
 
               <div className="product-info">
                 <h2 className="product-title">{product.title}</h2>
