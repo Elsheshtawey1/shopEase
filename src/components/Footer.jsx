@@ -12,10 +12,18 @@ const Footer = () => {
           <div className="footer-column">
             <h4>About Us</h4>
             <ul>
-              <li>Company Info</li>
-              <li>Careers</li>
-              <li>Press</li>
-              <li>Blog</li>
+              <li>
+                <Link to="/companyinfo">Company Info</Link>
+              </li>
+              <li>
+                <Link to="/careers">Careers</Link>
+              </li>
+              <li>
+                <Link to="/press">Press</Link>
+              </li>
+              <li>
+                <Link to="/blog">Blog</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-column">
@@ -24,13 +32,17 @@ const Footer = () => {
               <li>
                 <Link to="/contact">Contact Us</Link>
               </li>
-              <li>Returns</li>
+              <li>
+                <Link to="/Returns">Returns</Link>
+              </li>
               <li>
                 <Link to="/faq" className="faq-Footer">
                   FAQs
                 </Link>
               </li>
-              <li>Shipping Info</li>
+              <li>
+                <Link to="/ShippingInfo">ShippingInfo</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-column">
@@ -45,16 +57,16 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Follow Us</h4>
             <div className="social-icons">
-              <a href="#">
+              <a href="https://www.linkedin.com/in/mohamed-elsheshtawey/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebookF />
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/mohamed-elsheshtawey/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram />
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/mohamed-elsheshtawey/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                 <FaTwitter />
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/mohamed-elsheshtawey/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                 <FaYoutube />
               </a>
             </div>

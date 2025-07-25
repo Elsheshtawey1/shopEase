@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className="offer-text">
           <p className="animated-offer">🎉 Special Offer: Get 20% off on your first purchase!</p>
         </div>
-        <div className="social-icons">
+        <div className="social-icons-nav">
           <a href="https://www.linkedin.com/in/mohamed-elsheshtawey/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
             <FaFacebookF />
           </a>

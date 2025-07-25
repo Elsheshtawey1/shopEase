@@ -1,0 +1,178 @@
+.about-rich-container {
+  padding: 4rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--text-primary);
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-background);
+}
+
+/* === Hero Section === */
+.hero-rich {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.hero-rich h1 {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.hero-rich p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* === Animation === */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Grid Section === */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.about-card {
+  background-color: var(--color-card);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--color-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-border);
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.about-card h2 {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.about-card p {
+  line-height: 1.7;
+  white-space: pre-line;
+  color: var(--text-primary);
+}
+
+.card-cta {
+  margin-top: 1rem;
+}
+
+.inline-link {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.inline-link:hover {
+  text-decoration: underline;
+}
+
+/* === CTA Banner === */
+.cta-banner {
+  background-color: var(--color-secondary);
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-banner h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.cta-banner p {
+  margin-bottom: 1.2rem;
+}
+
+.cta-button {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* === Responsive Media Queries === */
+@media (max-width: 1024px) {
+  .hero-rich h1 {
+    font-size: 2rem;
+  }
+
+  .hero-rich p {
+    font-size: 1.1rem;
+  }
+
+  .cta-banner h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-rich-container {
+    padding: 2.5rem 1rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-rich h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-rich p {
+    font-size: 1rem;
+  }
+
+  .cta-button {
+    width: 100%;
+    display: block;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-rich h1 {
+    font-size: 1.5rem;
+  }
+
+  .about-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .about-card {
+    padding: 1.5rem;
+  }
+
+  .cta-banner h2 {
+    font-size: 1.3rem;
+  }
+}

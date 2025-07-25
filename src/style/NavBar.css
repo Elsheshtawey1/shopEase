@@ -2,11 +2,11 @@
 .offer-bar {
   background-color: var(--color-accent);
   color: var(--color-card);
-  padding: 0.4rem 1.2rem;
+  padding: 0.2rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   position: relative;
   z-index: 999;
@@ -31,25 +31,26 @@
   }
 }
 
-.social-icons {
+.social-icons-nav {
   display: flex;
   gap: 0.6rem;
+  margin: 0.1rem 0;
 }
 
-.social-icons a {
+.social-icons-nav a {
   background-color: var(--color-card);
   color: var(--color-accent);
-  width: 2rem;
-  height: 2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
-.social-icons a:hover {
+.social-icons-nav a:hover {
   background-color: var(--text-primary);
   color: var(--color-card);
 }
@@ -271,9 +272,9 @@
 
 @media (max-width: 600px) {
   .offer-bar {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     flex-direction: column;
-    padding: 0.2rem 1rem;
+    padding: 0.3rem 1rem;
   }
 
   .social-icons {
@@ -284,7 +285,7 @@
   .social-icons a {
     width: 1.6rem;
     height: 1.6rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .icon {
@@ -315,6 +316,6 @@
   }
 
   .right-icons {
-    gap: 0;
+    gap: 12px;
   }
 }

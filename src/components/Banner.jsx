@@ -54,7 +54,7 @@ const BannerSwitcher = () => {
     <Container>
       <div className="banner-section">
         <div className="main-banner">
-          {loading ? <div className="skeleton-banner" /> : <img src={mainImage} alt="Main" loading="eager" />}
+          {loading ? <div className="skeleton-banner" /> : <img src={mainImage} alt="Main" loading="eager"  />}
 
           <button className="arrow left" onClick={handlePrev}>
             <FiChevronLeft />

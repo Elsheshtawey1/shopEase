@@ -117,7 +117,7 @@
 
 .quantity-controls button:hover {
   background-color: #c62828;
-  /* أو أنشئ متغير --color-primary-dark */
+
 }
 
 .quantity-controls span {
