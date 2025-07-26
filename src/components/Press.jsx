@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Style/InfoPages.css";
+import "../style/InfoPages.css";
 
 const Press = () => {
   return (

@@ -1,7 +1,7 @@
 // ShippingInfo.jsx
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../Style/InfoPages.css";
+import "../style/InfoPages.css";
 
 const ShippingInfo = () => {
   return (
