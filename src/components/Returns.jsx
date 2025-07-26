@@ -1,7 +1,6 @@
 // Returns.jsx
 import { NavLink } from "react-router-dom";
 import "../style/InfoPages.css";
-
 const Returns = () => {
   return (
     <main className="info-page">

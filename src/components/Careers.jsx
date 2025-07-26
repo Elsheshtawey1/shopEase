@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/InfoPages.css";
-
 const Careers = () => {
   return (
     <div className="info-page">

@@ -2,7 +2,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../style/InfoPages.css";
-
 const ShippingInfo = () => {
   return (
     <main className="info-page">
