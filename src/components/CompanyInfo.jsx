@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../style/InfoPages.css";
+// 
 const CompanyInfo = () => {
   return (
     <div className="info-page">
