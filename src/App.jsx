@@ -1,10 +1,11 @@
 // library imports
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect, lazy, Suspense, useRef } from "react";
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { debounce } from "lodash";
 // Redux
 import { User } from "./redux/appSlice";
 //  API
@@ -17,11 +18,17 @@ import Home from "./page/Home";
 import NotFound from "./page/NotFound";
 import Loader from "./components/Loader";
 import AboutUs from "./components/AboutUs";
+import ErrorBoundary from "./layout/Error Boundary";
+import Suggested from "./components/Suggested";
+import ProtectRouts from "./Utils/ProtectRouts";
+import ShippingPage from "./page/ShippingPage";
+import PaymentPage from "./page/PaymentPage";
+import ReviewPage from "./page/ReviewPage";
+import OrderConfirmation from "./page/OrderConfirmation";
 // Lazy-loaded components
 const Contact = lazy(() => import("./page/Contact"));
 const AllProductsPage = lazy(() => import("./page/AllProductsPage"));
 const ProductDetails = lazy(() => import("./page/ProductDetails"));
-const Proceed = lazy(() => import("./page/Proceed"));
 const Faq = lazy(() => import("./components/Faq"));
 const Cart = lazy(() => import("./components/Cart"));
 const About = lazy(() => import("./components/AboutUs"));
@@ -42,7 +49,7 @@ const router = createBrowserRouter(
         <Route path="/contact" element={<Contact />} />
         <Route path="/AllProductsPage" element={<AllProductsPage />} loader={ProductData} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="/Proceed" element={<Proceed />} />
+
         <Route path="/Faq" element={<Faq />} />
         <Route path="/About" element={<AboutUs />} />
         <Route path="/CompanyInfo" element={<CompanyInfo />} />
@@ -52,17 +59,32 @@ const router = createBrowserRouter(
         <Route path="/ShippingInfo" element={<ShippingInfo />} />
         <Route path="/Returns" element={<Returns />} />
       </Route>
-
+      <Route element={<ProtectRouts />}>
+        <Route path="/checkout/shipping" element={<ShippingPage />} />
+        <Route path="/checkout/payment" element={<PaymentPage />} />
+        <Route path="/checkout/review" element={<ReviewPage />} />
+        <Route path="/OrderConfirmation" element={<OrderConfirmation />} />
+      </Route>
       <Route path="/Registration" element={<Registration />} />
       <Route path="/Sign" element={<Sign />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/Suggested" element={<Suggested />} />
     </Route>
   )
 );
-
-
 const App = () => {
   const dispatch = useDispatch();
+  const cart = useSelector((state) => state.app.product);
+  const saveCartToLocalStorage = useRef(
+    debounce((cart) => {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }, 1000),
+    []
+  );
+
+  useEffect(() => {
+    saveCartToLocalStorage.current(cart); 
+  }, [cart]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -83,10 +105,12 @@ const App = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <RouterProvider router={router} />
-      </Suspense>
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <RouterProvider router={router} />
+        </Suspense>
+        <ToastContainer position="bottom-right" autoClose={3000} />
+      </ErrorBoundary>
     </>
   );
 };

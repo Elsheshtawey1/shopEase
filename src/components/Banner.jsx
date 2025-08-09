@@ -4,8 +4,8 @@ import "../style/Banner.css";
 import Container from "./Container";
 
 const BannerSwitcher = () => {
-  const [mainImage, setMainImage] = useState("/img/second_slider.b9288b4081970efae138.png");
-  const [sideImages, setSideImages] = useState(["/img/baner.png", "/img/third_slide.c362b5de2e9c9591c741.jpg"]);
+  const [mainImage, setMainImage] = useState("/img/second_slider.b9288b4081970efae138.webp");
+  const [sideImages, setSideImages] = useState(["/img/baner.webp", "/img/third_slide.c362b5de2e9c9591c741.webp"]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

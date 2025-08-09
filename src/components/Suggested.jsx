@@ -1,53 +1,61 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { FaShoppingCart, FaStar } from "react-icons/fa";
-import "../style/Products.css";
-import Container from "./Container";
+import { Link, useParams } from "react-router-dom";
+import { FaStar, FaShoppingCart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { useQuery } from "@tanstack/react-query";
 import { addToCart } from "../redux/appSlice";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useQuery } from "@tanstack/react-query";
+import Container from "./Container";
+import "../style/Suggested.css";
 import { ProductData } from "../api/api";
 import ProductSkeleton from "./ProductSkeleton";
 
-const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
+function Suggested() {
   const dispatch = useDispatch();
+  const { id: currentProductId } = useParams(); 
 
   const {
-    data: products,
+    data: products = [],
     isLoading,
     isError,
-    error,
   } = useQuery({
     queryKey: ["products"],
     queryFn: ProductData,
+    staleTime: 1000 * 60 * 5, 
   });
 
-  if (isLoading)
+  if (isLoading) {
     return (
-      <div className="loading-message">
-        <ProductSkeleton count={8} />
-      </div>
+      <Container>
+        <div className="suggested-product">
+          <h2><ProductSkeleton count={8} /></h2>
+        </div>
+      </Container>
     );
-  if (isError) return <div className="loading-message">Error: {error.message}</div>;
+  }
 
-  const displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
+  if (isError) {
+    return (
+      <Container>
+        <div className="suggested-product">
+          <h2>Failed to load products. Please try again later.</h2>
+        </div>
+      </Container>
+    );
+  }
+  const filteredProducts = products.filter((product) => String(product.id) !== String(currentProductId));
+  const shuffledProducts = [...filteredProducts].sort(() => Math.random() - 0.5);
+  const suggestedProducts = shuffledProducts.slice(0, 8);
 
   return (
     <Container>
-      <div className="products-container">
-        <div className="products-header">
-          <h1 className={`products-title ${viewAllClass}`}>{title}</h1>
-          {showViewAll && (
-            <Link to="/AllProductsPage" className="view-all-link">
-              View All
-            </Link>
-          )}
+      <div className="suggested-product">
+        <div className="header">
+          <h1>Explore Related Products</h1>
         </div>
 
         <div className="products-grid">
-          {displayedProducts.map((product) => (
+          {suggestedProducts.map((product) => (
             <div key={product.id} className="product-card" role="article" aria-label={product.title}>
               <Link to={`/product/${product.id}`} className="product-link">
                 <div className="product-image-wrapper">
@@ -57,7 +65,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
 
               <div className="product-info">
                 <h2 className="product-title">{product.title}</h2>
-                <p className="product-description">{product.description}</p>
+                <p className="product-description">{product.description.length > 80 ? product.description.slice(0, 80) + "..." : product.description}</p>
 
                 <div className="product-footer">
                   <div className="product-rating" aria-label={`Rating: ${product.rating?.rate ?? "N/A"} out of 5`}>
@@ -81,10 +89,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
                         category: product.category,
                       })
                     );
-                    toast.dismiss();
-                    toast.success(`${product.title.slice(0, 20)} added to cart!`, {
-                      position: "bottom-right",
-                    });
+                    toast.success(`${product.title.slice(0, 20)} added to cart!`, { position: "bottom-right" });
                   }}
                   className="add-to-cart-button"
                   aria-label={`Add ${product.title} to cart`}
@@ -98,6 +103,6 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
       </div>
     </Container>
   );
-};
+}
 
-export default Products;
+export default Suggested;

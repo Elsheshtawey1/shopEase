@@ -104,8 +104,11 @@ const Navbar = () => {
               </NavLink>
 
               {/* logout */}
-              {user && (
-                <button className="logout-button" onClick={handleLogout}>
+              {user &&  (
+                <button className="logout-button" onClick={handleLogout}
+                  type="button"
+                  title="Logout"
+                  aria-label="Logout">
                   <FiLogOut />
                 </button>
               )}

@@ -15,7 +15,6 @@ const CartPage = () => {
   const cartItems = useSelector((state) => state.app.product);
   const User = useSelector((state) => state.app.user);
   const navigate = useNavigate();
-
   const calculateSubtotal = () => cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   const subtotal = calculateSubtotal();
@@ -121,8 +120,7 @@ const CartPage = () => {
                   timer: 2000,
                   text: `Thank you for your purchase, ${User.userName}!`,
                 });
-                dispatch(clearCart());
-                navigate("/Proceed");
+                navigate("/checkout/shipping");
               }
             }}
           >

@@ -45,7 +45,26 @@
 .thumbnails img:hover {
   transform: scale(1.05);
 }
+.heed-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  
+}
 
+.favorite-btn {
+  background: none;
+  border: none;
+  color: var(--color-primary);
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.2);
+}
 .product-detail-right {
   flex: 2;
   display: flex;
