@@ -2,51 +2,16 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiUser, FiShoppingCart, FiHeart, FiMenu, FiX, FiSearch } from "react-icons/fi";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
 import "../style/NavBar.css";
 import Container from "./Container";
-import { useDispatch, useSelector } from "react-redux";
-import { getAuth, signOut } from "firebase/auth";
-import { logoutUser } from "../redux/appSlice";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-const MySwal = withReactContent(Swal);
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
-  const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const product = useSelector((state) => state.app.product);
-  const user = useSelector((state) => state.app.user);
-  const handleLogout = () => {
-    MySwal.fire({
-      title: "Are you sure?",
-      text: "Do you really want to log out?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, log me out!",
-      cancelButtonText: "No, keep me logged in",
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          const auth = getAuth();
-          signOut(auth).then(() => {
-            dispatch(logoutUser());
-            Swal.fire("Logged out!", "You have been logged out successfully.", "success");
-            // Sign-out successful.
-          });
-        }
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong!",
-        });
-      });
-  };
+
   return (
     <>
       <div className="offer-bar">
@@ -65,6 +30,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
+
       <nav className="navbar">
         <Container>
           <div className="navbar-container">
@@ -96,31 +62,20 @@ const Navbar = () => {
               </NavLink>
             </div>
 
-            {/* fav icon */}
+            {/* Right Icons */}
             <div className="right-icons">
-              {/*login */}
-              <NavLink to={user ? "/" : "/Registration"} className="icon user-icon">
-                {user ? <span className="username">{user.userName || "User"}</span> : <FiUser />}
+              {/* Profile Icon */}
+              <NavLink to="/ProfilePage" className="icon profile-icon" title="Profile" aria-label="Profile">
+                <FiUser />
               </NavLink>
 
-              {/* logout */}
-              {user &&  (
-                <button className="logout-button" onClick={handleLogout}
-                  type="button"
-                  title="Logout"
-                  aria-label="Logout">
-                  <FiLogOut />
-                </button>
-              )}
-
-              {/* <NavLink to="/favorites" className="icon">
-                <FiHeart />
-              </NavLink> */}
-              {/* cart icon */}
+              {/* Cart Icon */}
               <NavLink to="/cart" className="icon">
                 <FiShoppingCart />
                 <span className="cart-count">{product.length}</span>
               </NavLink>
+
+              {/* Mobile Menu Toggle */}
               <div className="menu-toggle" onClick={toggleMenu}>
                 {menuOpen ? <FiX /> : <FiMenu />}
               </div>

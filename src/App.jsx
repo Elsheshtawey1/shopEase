@@ -38,6 +38,7 @@ const Press = lazy(() => import("./components/Press"));
 const Blog = lazy(() => import("./components/Blog"));
 const ShippingInfo = lazy(() => import("./components/ShippingInfo"));
 const Returns = lazy(() => import("./components/Returns"));
+const ProfilePage = lazy(() => import("./page/ProfilePage"));
 
 // ✅ Routes
 const router = createBrowserRouter(
@@ -58,6 +59,7 @@ const router = createBrowserRouter(
         <Route path="/Blog" element={<Blog />} />
         <Route path="/ShippingInfo" element={<ShippingInfo />} />
         <Route path="/Returns" element={<Returns />} />
+        <Route path="/ProfilePage" element={<ProfilePage />} />
       </Route>
       <Route element={<ProtectRouts />}>
         <Route path="/checkout/shipping" element={<ShippingPage />} />

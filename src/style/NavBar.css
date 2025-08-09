@@ -177,33 +177,7 @@
 }
 
 /* Username next to user icon */
-.username {
-  font-weight: 600;
-  color: var(--color-card);
-  font-size: 0.9rem;
-  background-color: var(--color-primary);
-  padding: 0.4rem 0.6rem;
-  border-radius: 1.25rem;
-  display: flex;
-  align-items: center;
-  transition: 0.3s ease;
-}
 
-/* Logout Button Styled as Icon */
-.logout-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.25rem;
-  padding: 0 0.6rem;
-  color: var(--text-primary);
-  transition: color 0.3s ease, transform 0.2s ease;
-}
-
-.logout-button:hover {
-  color: var(--color-error);
-  transform: scale(1.1);
-}
 
 /* Cart count bubble */
 .cart-count {

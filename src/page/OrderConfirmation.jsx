@@ -14,19 +14,40 @@ const steps = [
 function OrderConfirmation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { orderDetails } = useSelector((state) => state.checkout);
+  const orderDetails = useSelector((state) => state.checkout.orderDetails);
+  const user = useSelector((state) => state.app.user);
+
   const [redirectSeconds, setRedirectSeconds] = useState(40);
 
+  // حفظ الطلب في localStorage
+  useEffect(() => {
+    if (orderDetails && orderDetails.orderItems && orderDetails.orderItems.length > 0 && user?.email) {
+      const orderToSave = {
+        ...orderDetails,
+        id: Date.now(),
+        userEmail: user.email,
+        date: new Date().toLocaleDateString(),
+      };
+
+      const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      existingOrders.push(orderToSave);
+      localStorage.setItem("orders", JSON.stringify(existingOrders));
+    }
+  }, [orderDetails, user]);
+
+  // إعادة التوجيه في حالة عدم وجود بيانات طلب صحيحة
   useEffect(() => {
     if (!orderDetails || !orderDetails.orderItems || orderDetails.orderItems.length === 0) {
       navigate("/checkout/shipping");
     }
   }, [orderDetails, navigate]);
 
+  // تفريغ العربة عند الدخول للصفحة
   useEffect(() => {
     dispatch(clearCart());
   }, [dispatch]);
 
+  // عداد الرجوع للصفحة الرئيسية تلقائياً بعد 40 ثانية
   useEffect(() => {
     const timer = setInterval(() => {
       setRedirectSeconds((prev) => {
@@ -37,6 +58,7 @@ function OrderConfirmation() {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(timer);
   }, [navigate]);
 
@@ -80,7 +102,7 @@ function OrderConfirmation() {
           {orderDetails.orderItems.map((item, i) => (
             <details key={i} className="product-details">
               <summary>
-                 - { item.title} - {item.quantity} × ${item.price.toFixed(2)} = ${(item.quantity * item.price).toFixed(2)}
+                - {item.title} - {item.quantity} × ${item.price.toFixed(2)} = ${(item.quantity * item.price).toFixed(2)}
               </summary>
               <div className="product-info">
                 <img src={item.img} alt={item.title} />
@@ -120,7 +142,8 @@ function OrderConfirmation() {
 
       <p className="redirect-note">
         Redirecting to homepage in {redirectSeconds} second
-        {redirectSeconds !== 1 ? "s" : ""}...
+        {redirectSeconds !== 1 ? "s" : ""}
+        ...
       </p>
     </div>
   );
