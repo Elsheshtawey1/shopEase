@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 import Container from "../components/Container";
 import ProductSkeleton from "../components/ProductSkeleton";
 import { useDispatch } from "react-redux";
-import { addToCart, addToWishlist } from "../redux/appSlice";
+import { addToCart, addToWithList } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import "../style/ProductDetails.css";
 import { useParams } from "react-router-dom";
@@ -49,10 +49,9 @@ function ProductDetails() {
     );
     toast.success("✅ Added to cart!", { position: "bottom-right" });
   };
-
   const handleAddToWishlist = () => {
     dispatch(
-      addToWishlist({
+      addToWithList({
         id: product.id,
         img: product.image,
         title: product.title,

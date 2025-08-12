@@ -4,14 +4,14 @@ import { FaShoppingCart, FaStar } from "react-icons/fa";
 import "../style/Products.css";
 import Container from "./Container";
 import { useDispatch } from "react-redux";
-import { addToCart, addToWishlist } from "../redux/appSlice";
+import { addToCart } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "@tanstack/react-query";
 import { ProductData } from "../api/api";
 import ProductSkeleton from "./ProductSkeleton";
 
-const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categoryFilter = "", priceFilter = [0, 1000] }) => {
+const Products = ({ limit, title, showViewAll = true, viewAllClass = "" }) => {
   const dispatch = useDispatch();
 
   const {
@@ -32,13 +32,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
     );
   if (isError) return <div className="loading-message">Error: {error.message}</div>;
 
-  let displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
-
-  displayedProducts = displayedProducts.filter((product) => {
-    const matchCategory = categoryFilter ? product.category === categoryFilter : true;
-    const matchPrice = product.price >= priceFilter[0] && product.price <= priceFilter[1];
-    return matchCategory && matchPrice;
-  });
+  const displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
 
   return (
     <Container>
@@ -66,7 +60,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                 <p className="product-description">{product.description}</p>
 
                 <div className="product-footer">
-                  <div className="product-rating">
+                  <div className="product-rating" aria-label={`Rating: ${product.rating?.rate ?? "N/A"} out of 5`}>
                     <FaStar className="star" />
                     <span>{product.rating?.rate ?? "N/A"}</span>
                   </div>
@@ -93,32 +87,9 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                     });
                   }}
                   className="add-to-cart-button"
+                  aria-label={`Add ${product.title} to cart`}
                 >
-                  <FaShoppingCart /> Add to Cart
-                </button>
-                <button
-                  className="add-to-wishlist"
-                  onClick={() => {
-                    dispatch(
-                      addToWishlist({
-                        id: product.id,
-                        img: product.image,
-                        title: product.title,
-                        price: product.price,
-                        quantity: 1,
-                        rating: product.rating,
-                        description: product.description,
-                        category: product.category,
-                      })
-                    );
-                    toast.dismiss();
-                    toast.success(
-                      `${product.title.slice(0, 20)} added to wishlist!`,
-                      { position: "bottom-right" }
-                    );
-                  }}
-                >
-                  Add to Wishlist
+                  <FaShoppingCart aria-hidden="true" /> Add to Cart
                 </button>
               </div>
             </div>

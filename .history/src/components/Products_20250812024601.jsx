@@ -110,11 +110,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                         description: product.description,
                         category: product.category,
                       })
-                    );
-                    toast.dismiss();
-                    toast.success(
-                      `${product.title.slice(0, 20)} added to wishlist!`,
-                      { position: "bottom-right" }
+                      
                     );
                   }}
                 >

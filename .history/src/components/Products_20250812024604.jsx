@@ -112,7 +112,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                       })
                     );
                     toast.dismiss();
-                    toast.success(
+                    toast.info(
                       `${product.title.slice(0, 20)} added to wishlist!`,
                       { position: "bottom-right" }
                     );

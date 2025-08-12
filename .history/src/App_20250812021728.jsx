@@ -40,6 +40,7 @@ const Blog = lazy(() => import("./components/Blog"));
 const ShippingInfo = lazy(() => import("./components/ShippingInfo"));
 const Returns = lazy(() => import("./components/Returns"));
 const ProfilePage = lazy(() => import("./page/ProfilePage"));
+const wishlist = lazy(() => import("./components/Wishlist"));
 
 // ✅ Routes
 const router = createBrowserRouter(

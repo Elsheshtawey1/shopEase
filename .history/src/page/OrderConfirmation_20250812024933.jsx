@@ -35,19 +35,19 @@ function OrderConfirmation() {
     }
   }, [orderDetails, user]);
 
-
+  // إعادة التوجيه في حالة عدم وجود بيانات طلب صحيحة
   useEffect(() => {
     if (!orderDetails || !orderDetails.orderItems || orderDetails.orderItems.length === 0) {
       navigate("/checkout/shipping");
     }
   }, [orderDetails, navigate]);
 
-
+  // تفريغ العربة عند الدخول للصفحة
   useEffect(() => {
     dispatch(clearCart());
   }, [dispatch]);
 
-
+  // عداد الرجوع للصفحة الرئيسية تلقائياً بعد 40 ثانية
   useEffect(() => {
     const timer = setInterval(() => {
       setRedirectSeconds((prev) => {

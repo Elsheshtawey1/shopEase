@@ -1,5 +1,4 @@
 :root {
-  /* === Main Brand Colors === */
   --color-primary: #E53935;
   /* Primary CTA / Buttons */
   --color-secondary: #F4A261;
@@ -16,6 +15,7 @@
   /* Borders / Lines */
   --color-shadow: rgba(0, 0, 0, 0.05);
   /* Light shadows */
+
   /* === Text Colors === */
   --text-primary: #2E2E2E;
   /* Main headings & body text */

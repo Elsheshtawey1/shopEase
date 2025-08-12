@@ -159,24 +159,3 @@
   color: var(--text-secondary);
   font-size: 1rem;
 }
-.add-to-wishlist {
-  margin-top: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: var(--color-primary);
-  color: var(--color-card);
-  border: none;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-to-wishlist:hover,
-.add-to-wishlist:focus {
-  background-color: var(--color-success);
-}

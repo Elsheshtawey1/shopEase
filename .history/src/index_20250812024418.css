@@ -1,0 +1,35 @@
+:root {
+  /* === Main Brand Colors === */
+  --color-primary: #E53935;
+  /* Primary CTA / Buttons */
+  --color-primary-dark: #c62828;
+  --color-secondary: #F4A261;
+  /* Secondary Buttons / Highlights */
+  --color-accent: #FFB347;
+  /* Optional Accent / Badges */
+
+  /* === Neutral Base === */
+  --color-background: #FAFAFA;
+  /* App background */
+  --color-card: #FFFFFF;
+  /* Card / Panel background */
+  --color-border: #E0E0E0;
+  /* Borders / Lines */
+  --color-shadow: rgba(0, 0, 0, 0.05);
+  /* Light shadows */
+
+  /* === Text Colors === */
+  --text-primary: #2E2E2E;
+  /* Main headings & body text */
+  --text-secondary: #757575;
+  /* Descriptions / Labels */
+
+  /* === Status Colors === */
+  --color-success: #4CAF50;
+  --color-error: #E53935;
+  --color-error-dark: #a50e1d;
+  --color-warning: #FFA726;
+
+  /* === Hover Colors === */
+  --color-hover-dark: #351b8b;
+}

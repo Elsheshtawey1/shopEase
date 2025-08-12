@@ -4,7 +4,7 @@ import { FaShoppingCart, FaStar } from "react-icons/fa";
 import "../style/Products.css";
 import Container from "./Container";
 import { useDispatch } from "react-redux";
-import { addToCart, addToWishlist } from "../redux/appSlice";
+import { addToCart , addToWithList } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "@tanstack/react-query";
@@ -23,6 +23,7 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
     queryKey: ["products"],
     queryFn: ProductData,
   });
+  
 
   if (isLoading)
     return (
@@ -96,28 +97,20 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                 >
                   <FaShoppingCart /> Add to Cart
                 </button>
-                <button
-                  className="add-to-wishlist"
-                  onClick={() => {
-                    dispatch(
-                      addToWishlist({
-                        id: product.id,
-                        img: product.image,
-                        title: product.title,
-                        price: product.price,
-                        quantity: 1,
-                        rating: product.rating,
-                        description: product.description,
-                        category: product.category,
-                      })
-                    );
-                    toast.dismiss();
-                    toast.success(
-                      `${product.title.slice(0, 20)} added to wishlist!`,
-                      { position: "bottom-right" }
-                    );
-                  }}
-                >
+                <button className="add-to-wishlist" onClick={() => {
+                  dispatch(
+                    addToWithList({
+                      id: product.id,
+                      img: product.image,
+                      title: product.title,
+                      price: product.price,
+                      quantity: 1,
+                      rating: product.rating,
+                      description: product.description,
+                      category: product.category,
+                    })
+                  )
+                }}>
                   Add to Wishlist
                 </button>
               </div>

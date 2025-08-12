@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 import Container from "../components/Container";
 import ProductSkeleton from "../components/ProductSkeleton";
 import { useDispatch } from "react-redux";
-import { addToCart, addToWishlist } from "../redux/appSlice";
+import { addToCart } from "../redux/appSlice";
 import { toast } from "react-toastify";
 import "../style/ProductDetails.css";
 import { useParams } from "react-router-dom";
@@ -50,23 +50,6 @@ function ProductDetails() {
     toast.success("✅ Added to cart!", { position: "bottom-right" });
   };
 
-  const handleAddToWishlist = () => {
-    dispatch(
-      addToWishlist({
-        id: product.id,
-        img: product.image,
-        title: product.title,
-        price: product.price,
-        quantity: 1,
-        rating: product.rating,
-        description: product.description,
-        category: product.category,
-      })
-    );
-    toast.dismiss();
-    toast.info("❤️ Added to wishlist!", { position: "bottom-right" });
-  };
-
   return (
     <>
       <Container>
@@ -85,7 +68,7 @@ function ProductDetails() {
           <div className="product-detail-right">
             <div className="heed-content">
               <h1 className="product-title">{product.title}</h1>
-              <button onClick={handleAddToWishlist} className="favorite-btn">
+              <button className="favorite-btn">
                 <FaHeart />
               </button>
             </div>

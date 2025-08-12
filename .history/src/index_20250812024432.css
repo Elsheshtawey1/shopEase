@@ -2,6 +2,7 @@
   /* === Main Brand Colors === */
   --color-primary: #E53935;
   /* Primary CTA / Buttons */
+  --color-primary-dark: #c62828;
   --color-secondary: #F4A261;
   /* Secondary Buttons / Highlights */
   --color-accent: #FFB347;
@@ -16,6 +17,7 @@
   /* Borders / Lines */
   --color-shadow: rgba(0, 0, 0, 0.05);
   /* Light shadows */
+
   /* === Text Colors === */
   --text-primary: #2E2E2E;
   /* Main headings & body text */
@@ -25,28 +27,11 @@
   /* === Status Colors === */
   --color-success: #4CAF50;
   --color-error: #E53935;
+  --color-error-dark: #a50e1d;
   --color-warning: #FFA726;
-  --color-primary-dark: #c62828;
-    --color-error-dark: #a50e1d;
-    --color-hover-dark: #351b8b;
-    --color-primary: #E53935;
-      --color-primary-dark: #c62828;
-      --color-secondary: #F4A261;
-      --color-accent: #FFB347;
-    
-      --color-background: #FAFAFA;
-      --color-card: #FFFFFF;
-      --color-border: #E0E0E0;
-      --color-shadow: rgba(0, 0, 0, 0.05);
-    
-      --text-primary: #2E2E2E;
-      --text-secondary: #757575;
-    
-      --color-success: #4CAF50;
-      --color-error: #E53935;
-      --color-error-dark: #a50e1d;
-      --color-warning: #FFA726;
-      --color-hover-dark: #351b8b;
+
+  /* === Hover Colors === */
+  --color-hover-dark: #351b8b;
 }
 
 /* === Reset === */

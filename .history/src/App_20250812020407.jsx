@@ -25,7 +25,6 @@ import ShippingPage from "./page/ShippingPage";
 import PaymentPage from "./page/PaymentPage";
 import ReviewPage from "./page/ReviewPage";
 import OrderConfirmation from "./page/OrderConfirmation";
-import Wishlist from "./components/Wishlist";
 // Lazy-loaded components
 const Contact = lazy(() => import("./page/Contact"));
 const AllProductsPage = lazy(() => import("./page/AllProductsPage"));
@@ -61,7 +60,6 @@ const router = createBrowserRouter(
         <Route path="/ShippingInfo" element={<ShippingInfo />} />
         <Route path="/Returns" element={<Returns />} />
         <Route path="/ProfilePage" element={<ProfilePage />} />
-        <Route path="/wishlist" element={<Wishlist />} />
       </Route>
       <Route element={<ProtectRouts />}>
         <Route path="/checkout/shipping" element={<ShippingPage />} />
