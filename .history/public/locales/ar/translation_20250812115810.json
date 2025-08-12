@@ -1,0 +1,12 @@
+{
+  "myProfile": "ملفي الشخصي",
+  "logout": "تسجيل الخروج",
+  "guestAccount": "حساب زائر",
+  "pleaseRegister": "يرجى التسجيل أو تسجيل الدخول للاستفادة من جميع المزايا.",
+  "registerLogin": "تسجيل / دخول",
+  "myOrders": "طلباتي",
+  "noOrders": "لا توجد طلبات.",
+  "pleaseLoginOrders": "يرجى تسجيل الدخول لعرض وإدارة طلباتك.",
+  "needHelp": "هل تحتاج مساعدة؟",
+  "contactSupport": "اتصل بالدعم"
+}

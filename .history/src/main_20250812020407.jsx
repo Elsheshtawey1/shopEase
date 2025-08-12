@@ -9,7 +9,7 @@ import { store } from "./redux/store.js";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Firebase from "./firebase/firebaseConfig.js";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import "./Utils/i18n.js"; 
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
