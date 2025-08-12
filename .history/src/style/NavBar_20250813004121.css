@@ -1,0 +1,310 @@
+/* ----------------- 1. Offer Bar ----------------- */
+.offer-bar {
+  background-color: var(--color-accent);
+  color: var(--color-card);
+  padding: 0.2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 999;
+}
+
+.animated-offer {
+  margin: 0;
+  animation: typing 3s steps(40, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--color-card);
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.social-icons-nav {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.1rem 0;
+}
+
+.social-icons-nav a {
+  background-color: var(--color-card);
+  color: var(--color-accent);
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.social-icons-nav a:hover {
+  background-color: var(--text-primary);
+  color: var(--color-card);
+}
+
+/* ----------------- 2. Navbar ----------------- */
+.navbar {
+  width: 100%;
+  background-color: var(--color-card);
+  box-shadow: 0 2px 5px var(--color-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+/* ----------------- 3. Navigation Links ----------------- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-grow: 1;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-item {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  position: relative;
+  transition: 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--color-primary);
+}
+
+.nav-item.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-primary);
+}
+
+/* ----------------- 4. Search Bar ----------------- */
+.search-bar {
+  position: relative;
+  width: 250px;
+  max-width: 80%;
+  margin: 0 100px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  padding-right: 2.5rem;
+  border: 2px solid var(--color-border);
+  border-radius: 2rem;
+  background-color: var(--color-card);
+  color: var(--text-primary);
+  transition: 0.3s ease;
+}
+
+.search-bar input:hover,
+.search-bar input:focus {
+  border-color: var(--color-primary);
+  background-color: var(--color-background);
+}
+
+.search-button {
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-primary);
+  color: var(--color-card);
+  border: none;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* ----------------- 5. Right Icons ----------------- */
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.icon {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0 0.6rem;
+}
+
+/* Username next to user icon */
+
+
+/* Cart count bubble */
+.cart-count {
+  background-color: var(--color-error);
+  color: var(--color-card);
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  position: relative;
+  top: -0.9rem;
+  right: 0.75rem;
+}
+.cart-count {
+  background-color: var(--color-error);
+  color: var(--color-card);
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  position: relative;
+  top: -0.9rem;
+  right: 0.75rem;
+}
+
+.lang-ar .cart-count {
+left: 50px;
+
+}
+
+/* ----------------- 6. Menu Toggle ----------------- */
+.menu-toggle {
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  color: var(--text-primary);
+}
+
+/* ----------------- 7. Responsive ----------------- */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-wrap: nowrap;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--color-background);
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    padding: 1rem 1.25rem;
+    z-index: 999;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .search-bar {
+    width: 100%;
+    margin-left: 0.5rem;
+  }
+
+  .search-button {
+    right: -1px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1220px) {
+  .search-bar {
+    width: 200px;
+    margin-left: 10px;
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .offer-bar {
+    font-size: 0.8rem;
+    flex-direction: column;
+    padding: 0.3rem 1rem;
+  }
+
+  .social-icons {
+    gap: 0.6rem;
+    padding: 5px 0;
+  }
+
+  .social-icons a {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    padding: 0;
+    font-size: 1.1rem;
+  }
+
+  .username {
+    font-weight: 400;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .nav-links {
+    top: 54px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .right-icons {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 450px) {
+  .navbar-container {
+    padding: 10px 2px;
+  }
+
+  .right-icons {
+    gap: 12px;
+  }
+}

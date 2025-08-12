@@ -1,0 +1,112 @@
+{
+  "order": "Order",
+  "date": "Date",
+  "total": "Total",
+  "shippingTo": "Shipping to",
+  "cancelOrder": "Cancel Order",
+  "areYouSure": "Are you sure?",
+  "confirmLogout": "Do you want to log out?",
+  "yesLogout": "Yes, log out",
+  "loggedOut": "Logged out",
+  "logoutSuccess": "You have successfully logged out",
+  "error": "Error",
+  "somethingWentWrong": "Something went wrong",
+  "cancelOrderQ": "Cancel this order?",
+  "confirmCancelOrder": "Do you really want to cancel this order?",
+  "yesCancel": "Yes, cancel",
+  "noKeep": "No, keep it",
+  "canceled": "Canceled",
+  "orderCanceled": "Order canceled",
+  "notProvided": "Not provided",
+  "myProfile": "My Profile",
+  "toggleLangMenu": "Toggle language menu",
+  "toggleTheme": "Toggle theme",
+  "user": "User",
+  "email": "Email",
+  "logout": "Logout",
+  "guest": "Guest",
+  "guestAccount": "Guest account",
+  "pleaseRegister": "Please register to continue",
+  "registerLogin": "Register / Login",
+  "myOrders": "My Orders",
+  "noOrders": "You have no orders yet",
+  "pleaseLoginOrders": "Please log in to view your orders",
+  "needHelp": "Need help?",
+  "supportText": "If you have any questions, our support team is here to help you.",
+  "contactSupport": "Contact Support",
+
+  "contact_us": "Contact Us",
+  "contact_us_subtitle": "Need help with your order? Want to collaborate with us? We'd love to hear from you!",
+  "check_faq": "Check the FAQs before contacting us",
+  "your_name": "Your name",
+  "your_email": "Your email",
+  "order_issue": "Order issue",
+  "shipping_delay": "Shipping delay",
+  "return_refund": "Return / Refund",
+  "business_inquiry": "Business inquiry",
+  "other": "Other",
+  "your_message": "Your message",
+  "send_message": "Send message",
+  "sending": "Sending...",
+  "message_sent_success": "Message sent successfully!",
+  "customer_support": "Customer Support",
+  "support_email": "support@yourecom.com",
+  "support_phone": "+20 123 456 789",
+  "support_hours": "Saturday to Thursday, 10 AM to 6 PM",
+
+  "about": {
+    "hero": {
+      "title": "About Easy shop",
+      "subtitle": "We’re redefining digital shopping through innovation, speed, and heart."
+    },
+    "sections": {
+      "story": {
+        "title": "Our Story",
+        "content": "Founded in 2022, ShopSphere began as a small digital storefront with a bold mission: make e-commerce smarter, faster, and more customer-focused. Today, we serve millions across the region with a seamless online shopping experience."
+      },
+      "mission": {
+        "title": "Our Mission",
+        "content": "We aim to empower customers with a reliable, efficient, and enjoyable way to shop online. From product discovery to doorstep delivery, we focus on making every step simple and satisfying."
+      },
+      "values": {
+        "title": "Core Values",
+        "content": "• Customer Obsession – we put users at the center of every decision.\n• Innovation – we adopt modern tech to lead the market.\n• Trust & Transparency – we communicate clearly and deliver what we promise."
+      },
+      "growth": {
+        "title": "Growth & Impact",
+        "content": "With over 10,000 verified vendors and 1M+ SKUs, we’re a hub for small businesses and large brands alike. In 2024 alone, we shipped over 3 million orders across 7 countries."
+      },
+      "team": {
+        "title": "Meet the Team",
+        "content": "Our diverse team of developers, designers, logistics experts, and customer support professionals work together every day to build something meaningful. Want to be part of it?",
+        "cta": "Explore Careers"
+      }
+    },
+    "ctaBanner": {
+      "title": "Have Questions or Ideas?",
+      "subtitle": "We’d love to hear from you. Reach out anytime.",
+      "button": "Contact Us"
+    }
+  }
+,
+  "footer": {
+    "aboutUs": "About Us",
+    "companyInfo": "Company Info",
+    "careers": "Careers",
+    "press": "Press",
+    "blog": "Blog",
+    "customerService": "Customer Service",
+    "contactUs": "Contact Us",
+    "returns": "Returns",
+    "faqs": "FAQs",
+    "shippingInfo": "Shipping Info",
+    "shop": "Shop",
+    "men": "Men",
+    "women": "Women",
+    "electronics": "Electronics",
+    "homeGarden": "Home & Garden",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved.",
+    "moreInfo": "For more information, contact us"
+  }
+}
