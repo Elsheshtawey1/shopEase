@@ -1,3 +1,5 @@
+/* Import accessibility styles */
+@import './style/accessibility.css';
 
 :root {
   /* === Brand Colors === */

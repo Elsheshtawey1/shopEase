@@ -106,7 +106,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className="navbar">
+      <nav className="navbar" role="navigation" aria-label="Main navigation">
         <Container>
           <div className="navbar-container">
             <div className="logo">MyLogo</div>
@@ -122,21 +122,32 @@ const Navbar = () => {
                   aria-label={t("searchPlaceholder")}
                   aria-expanded={suggestions.length > 0}
                   aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  aria-controls="search-suggestions"
+                  aria-activedescendant={highlightedIndex >= 0 ? `suggestion-${highlightedIndex}` : undefined}
                 />
                 <button className="search-button" aria-label="Search">
                   <FiSearch />
                 </button>
 
                 {suggestions.length > 0 && (
-                  <ul role="listbox" className="search-dropdown">
+                  <ul 
+                    id="search-suggestions"
+                    role="listbox" 
+                    className="search-dropdown"
+                    aria-label="Search suggestions"
+                  >
                     {suggestions.map((item, index) => (
                       <li
                         key={item.id}
+                        id={`suggestion-${index}`}
                         role="option"
+                        aria-selected={index === highlightedIndex}
                         style={{
                           background: index === highlightedIndex ? "#eee" : "#fff",
                         }}
                         onClick={() => handleSuggestionClick(item)}
+                        onMouseEnter={() => setHighlightedIndex(index)}
                       >
                         {item.title}
                       </li>
@@ -160,21 +171,45 @@ const Navbar = () => {
             </div>
 
             <div className="right-icons">
-              <NavLink to="/ProfilePage" className="icon profile-icon">
+              <NavLink 
+                to="/ProfilePage" 
+                className="icon profile-icon"
+                aria-label="My profile"
+              >
                 <FiUser />
+                <span className="visually-hidden">My profile</span>
               </NavLink>
-              <NavLink to="/wishlist" className="icon wishlist-icon">
+              <NavLink 
+                to="/wishlist" 
+                className="icon wishlist-icon"
+                aria-label={`Wishlist (${wishlist.length} items)`}
+                aria-live="polite"
+              >
                 <FiHeart />
                 <span className="cart-count">{wishlist.length}</span>
+                <span className="visually-hidden">items in wishlist</span>
               </NavLink>
-              <NavLink to="/cart" className="icon">
+              <NavLink 
+                to="/cart" 
+                className="icon"
+                aria-label={`Shopping cart (${cart.length} items)`}
+                aria-live="polite"
+              >
                 <FiShoppingCart />
                 <span className="cart-count">{cart.length}</span>
+                <span className="visually-hidden">items in cart</span>
               </NavLink>
 
-              <div className="menu-toggle" onClick={toggleMenu}>
+              <button 
+                className="menu-toggle" 
+                onClick={toggleMenu}
+                aria-expanded={menuOpen}
+                aria-controls="main-navigation"
+                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              >
                 {menuOpen ? <FiX /> : <FiMenu />}
-              </div>
+                <span className="visually-hidden">{menuOpen ? 'Close menu' : 'Open menu'}</span>
+              </button>
             </div>
           </div>
         </Container>

@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.a11y-changes.md
