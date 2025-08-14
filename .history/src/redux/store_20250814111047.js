@@ -8,6 +8,6 @@ export const store = configureStore({
     app: appReducer,
     checkout: checkoutReducer,
     search: searchReducer,
-    theme: themeReducer,
+    
   },
 });

@@ -165,6 +165,7 @@
   background-color: var(--color-primary-dark);
 }
 
+/* Dropdown suggestions */
 .search-dropdown {
   position: absolute;
   top: 105%;
@@ -204,12 +205,11 @@
     transform: translateY(0);
   }
 }
-
-/* ----------------- 5. Nav Icons ----------------- */
 .nav-icons {
   display: flex;
   align-items: center;
   gap: 1rem;
+  /* مسافة بين الأيقونات */
 }
 
 .nav-icons .icon {
@@ -217,17 +217,21 @@
   align-items: center;
   justify-content: center;
   width: 40px;
+  /* عرض ثابت */
   height: 40px;
+  /* ارتفاع ثابت */
   font-size: 1.4rem;
+  /* حجم الأيقونة نفسه */
   cursor: pointer;
   position: relative;
+  /* لو فيه badge فوق الأيقونة */
 }
 
 .nav-icons .icon svg {
   width: 20px;
-  height: 20px;
-}
+  height: 20px
 
+/* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;

@@ -1,7 +1,36 @@
 /* global.css */
 
 /* Light theme variables */
+body[data-theme="light"] {
+  --color-background: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #555555;
+  --color-primary: #0d6efd;
+  --color-primary-dark: #084298;
+  --color-card: #f9f9f9;
+  --color-border: #ddd;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-secondary: #6c757d;
+  --color-accent: #ffc107;
+  --color-error: #dc3545;
+  --color-error-dark: #a71d2a;
+}
 
+/* Dark theme variables */
+body[data-theme="dark"] {
+  --color-background: #121212;
+  --text-primary: #e0e0e0;
+  --text-secondary: #aaa;
+  --color-primary: #c62828;
+  --color-primary-dark: #8e0000;
+  --color-card: #1e1e1e;
+  --color-border: #333;
+  --color-shadow: rgba(255, 255, 255, 0.1);
+  --color-secondary: #f4a261;
+  --color-accent: #ffb366;
+  --color-error: #dc3545;
+  --color-error-dark: #a71d2a;
+}
 
 /* Global container */
 .profile-page-container {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaStar, FaHeart } from "react-icons/fa";
+import { FaShoppingCart, FaStar } from "react-icons/fa";
 import "../style/Products.css";
 import Container from "./Container";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,9 +10,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { useQuery } from "@tanstack/react-query";
 import { ProductData } from "../api/api";
 import ProductSkeleton from "./ProductSkeleton";
+import { toggleTheme } from "../redux/themeSlice";
 
 const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categoryFilter = "", priceFilter = [0, 1000] }) => {
   const SEARCH = useSelector((state) => state.search);
+  const Product = useSelector((state) => state.app.product);
   const dispatch = useDispatch();
 
   const {
@@ -31,12 +33,11 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
         <ProductSkeleton count={8} />
       </div>
     );
-
   if (isError) return <div className="loading-message">Error: {error.message}</div>;
 
   let displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
 
-  // فلتر الفئة والسعر
+  // الفلاتر الأخرى (الفئة - السعر)
   displayedProducts = displayedProducts.filter((product) => {
     const matchCategory = categoryFilter ? product.category === categoryFilter : true;
     const matchPrice = product.price >= priceFilter[0] && product.price <= priceFilter[1];
@@ -63,39 +64,11 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
         <div className="products-grid">
           {displayedProducts.map((product) => (
             <div key={product.id} className="product-card" role="article" aria-label={product.title}>
-              <div className="product-image-wrapper">
-                {/* الصورة فقط */}
-                <Link to={`/product/${product.id}`} className="product-link">
+              <Link to={`/product/${product.id}`} className="product-link">
+                <div className="product-image-wrapper">
                   <img src={product.image} alt={product.title} className="product-image" loading="lazy" />
-                </Link>
-
-                {/* زر القلب */}
-                <div
-                  className="product-wishlist-btn"
-                  onClick={() => {
-                    dispatch(
-                      addToWishlist({
-                        id: product.id,
-                        img: product.image,
-                        title: product.title,
-                        price: product.price,
-                        quantity: 1,
-                        rating: product.rating,
-                        description: product.description,
-                        category: product.category,
-                      })
-                    );
-                    toast.dismiss();
-                    toast.success(`${product.title.slice(0, 20)} added to wishlist!`, {
-                      position: "bottom-right",
-                    });
-                  }}
-                  aria-label="Add to wishlist"
-                  role="button"
-                >
-                  <FaHeart />
                 </div>
-              </div>
+              </Link>
 
               <div className="product-info">
                 <h2 className="product-title">{product.title}</h2>
@@ -131,6 +104,27 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                   className="add-to-cart-button"
                 >
                   <FaShoppingCart /> Add to Cart
+                </button>
+                <button
+                  className="add-to-wishlist"
+                  onClick={() => {
+                    dispatch(
+                      addToWishlist({
+                        id: product.id,
+                        img: product.image,
+                        title: product.title,
+                        price: product.price,
+                        quantity: 1,
+                        rating: product.rating,
+                        description: product.description,
+                        category: product.category,
+                      })
+                    );
+                    toast.dismiss();
+                    toast.success(`${product.title.slice(0, 20)} added to wishlist!`, { position: "bottom-right" });
+                  }}
+                >
+                  Add to Wishlist
                 </button>
               </div>
             </div>

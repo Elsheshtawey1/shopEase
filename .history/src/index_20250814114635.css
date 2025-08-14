@@ -1,4 +1,5 @@
-
+/* === Base Variables === */
+/* === Base Variables (Light Mode Default) === */
 :root {
   /* === Brand Colors === */
   --color-primary: #E53935;
@@ -16,8 +17,12 @@
   --text-primary: #2E2E2E;
   --text-secondary: #757575;
 
+  /* === Footer Colors (Light Default) === */
   --footer-bg: #000000;
+  /* ثابت أسود */
   --footer-text: #ffffff;
+  /* أبيض افتراضي أو تعدلها حسب ذوقك */
+
   /* === Status Colors === */
   --color-success: #4CAF50;
   --color-error: #E53935;
@@ -40,14 +45,29 @@ body[data-theme="dark"] {
   --color-card: #1e1e1e;
   --color-border: #333;
   --color-shadow: rgba(255, 255, 255, 0.1);
+
   --color-error: #dc3545;
   --color-error-dark: #a71d2a;
+
+  /* Footer text أبيض في الدارك */
   --footer-text: #ffffff;
-  --footer-bg: #000000;
 }
 
 /* === Footer Styling === */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 2rem;
+}
 
+footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
 /* === Reset === */
 * {
   margin: 0;

@@ -31,19 +31,18 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
         <ProductSkeleton count={8} />
       </div>
     );
-
   if (isError) return <div className="loading-message">Error: {error.message}</div>;
 
   let displayedProducts = Array.isArray(products) ? (limit ? products.slice(0, limit) : products) : [];
 
-  // فلتر الفئة والسعر
+  // فلترة حسب الفئة والسعر
   displayedProducts = displayedProducts.filter((product) => {
     const matchCategory = categoryFilter ? product.category === categoryFilter : true;
     const matchPrice = product.price >= priceFilter[0] && product.price <= priceFilter[1];
     return matchCategory && matchPrice;
   });
 
-  // فلتر البحث
+  // فلترة البحث
   displayedProducts = displayedProducts.filter(
     (product) => SEARCH.trim() === "" || product.title.toLowerCase().includes(SEARCH.toLowerCase()) || product.description.toLowerCase().includes(SEARCH.toLowerCase())
   );
@@ -64,14 +63,13 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
           {displayedProducts.map((product) => (
             <div key={product.id} className="product-card" role="article" aria-label={product.title}>
               <div className="product-image-wrapper">
-                {/* الصورة فقط */}
                 <Link to={`/product/${product.id}`} className="product-link">
                   <img src={product.image} alt={product.title} className="product-image" loading="lazy" />
                 </Link>
 
-                {/* زر القلب */}
+                {/* أيقونة الـ Wishlist */}
                 <div
-                  className="product-wishlist-btn"
+                  className="wishlist-icon"
                   onClick={() => {
                     dispatch(
                       addToWishlist({
@@ -90,8 +88,6 @@ const Products = ({ limit, title, showViewAll = true, viewAllClass = "", categor
                       position: "bottom-right",
                     });
                   }}
-                  aria-label="Add to wishlist"
-                  role="button"
                 >
                   <FaHeart />
                 </div>

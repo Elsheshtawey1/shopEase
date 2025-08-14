@@ -1,23 +1,30 @@
-
+/* === Base Variables === */
 :root {
   /* === Brand Colors === */
   --color-primary: #E53935;
+  /* CTA / Buttons */
   --color-primary-dark: #c62828;
   --color-secondary: #F4A261;
+  /* Secondary buttons / highlights */
   --color-accent: #FFB347;
+  /* Optional accents */
 
   /* === Neutral Base === */
   --color-background: #FAFAFA;
+  /* App background */
   --color-card: #FFFFFF;
+  /* Card / Panel background */
   --color-border: #E0E0E0;
+  /* Borders / lines */
   --color-shadow: rgba(0, 0, 0, 0.05);
+  /* Light shadows */
 
   /* === Text Colors === */
   --text-primary: #2E2E2E;
+  /* Main headings & body */
   --text-secondary: #757575;
+  /* Descriptions / labels */
 
-  --footer-bg: #000000;
-  --footer-text: #ffffff;
   /* === Status Colors === */
   --color-success: #4CAF50;
   --color-error: #E53935;
@@ -26,7 +33,26 @@
   --color-hover-dark: #351b8b;
 }
 
-/* === Dark Theme Overrides === */
+/* === Light Theme === */
+body[data-theme="light"] {
+  --color-background: #ffffff;
+  --text-primary: #000000;
+  --text-secondary: #555555;
+
+  --color-primary: #0d6efd;
+  --color-primary-dark: #084298;
+  --color-secondary: #6c757d;
+  --color-accent: #ffc107;
+
+  --color-card: #f9f9f9;
+  --color-border: #ddd;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  --color-error: #dc3545;
+  --color-error-dark: #a71d2a;
+}
+
+/* === Dark Theme === */
 body[data-theme="dark"] {
   --color-background: #121212;
   --text-primary: #e0e0e0;
@@ -40,13 +66,10 @@ body[data-theme="dark"] {
   --color-card: #1e1e1e;
   --color-border: #333;
   --color-shadow: rgba(255, 255, 255, 0.1);
+
   --color-error: #dc3545;
   --color-error-dark: #a71d2a;
-  --footer-text: #ffffff;
-  --footer-bg: #000000;
 }
-
-/* === Footer Styling === */
 
 /* === Reset === */
 * {

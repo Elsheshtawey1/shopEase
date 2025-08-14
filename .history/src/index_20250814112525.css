@@ -1,53 +1,64 @@
-
 :root {
-  /* === Brand Colors === */
+  /* === Main Brand Colors === */
   --color-primary: #E53935;
-  --color-primary-dark: #c62828;
+  /* Primary CTA / Buttons */
   --color-secondary: #F4A261;
+  /* Secondary Buttons / Highlights */
   --color-accent: #FFB347;
+  /* Optional Accent / Badges */
 
   /* === Neutral Base === */
   --color-background: #FAFAFA;
+  /* App background */
   --color-card: #FFFFFF;
+  /* Card / Panel background */
   --color-border: #E0E0E0;
+  /* Borders / Lines */
   --color-shadow: rgba(0, 0, 0, 0.05);
-
+  /* Light shadows */
   /* === Text Colors === */
   --text-primary: #2E2E2E;
+  /* Main headings & body text */
   --text-secondary: #757575;
+  /* Descriptions / Labels */
 
-  --footer-bg: #000000;
-  --footer-text: #ffffff;
   /* === Status Colors === */
   --color-success: #4CAF50;
   --color-error: #E53935;
-  --color-error-dark: #a50e1d;
   --color-warning: #FFA726;
-  --color-hover-dark: #351b8b;
+  --color-primary-dark: #c62828;
+    --color-error-dark: #a50e1d;
+    --color-hover-dark: #351b8b;
+    --color-primary: #E53935;
+      --color-primary-dark: #c62828;
+      --color-secondary: #F4A261;
+      --color-accent: #FFB347;
+    
+      --color-background: #FAFAFA;
+      --color-card: #FFFFFF;
+      --color-border: #E0E0E0;
+      --color-shadow: rgba(0, 0, 0, 0.05);
+    
+      --text-primary: #2E2E2E;
+      --text-secondary: #757575;
+    
+      --color-success: #4CAF50;
+      --color-error: #E53935;
+      --color-error-dark: #a50e1d;
+      --color-warning: #FFA726;
+      --color-hover-dark: #351b8b;
+}
+* global.css */ body[data-theme="light"] {
+  --bg-color: #fff;
+  --text-color: #000;
+  --primary-color: #0d6efd;
 }
 
-/* === Dark Theme Overrides === */
 body[data-theme="dark"] {
-  --color-background: #121212;
-  --text-primary: #e0e0e0;
-  --text-secondary: #aaa;
-
-  --color-primary: #c62828;
-  --color-primary-dark: #8e0000;
-  --color-secondary: #f4a261;
-  --color-accent: #ffb366;
-
-  --color-card: #1e1e1e;
-  --color-border: #333;
-  --color-shadow: rgba(255, 255, 255, 0.1);
-  --color-error: #dc3545;
-  --color-error-dark: #a71d2a;
-  --footer-text: #ffffff;
-  --footer-bg: #000000;
+  --bg-color: #121212;
+  --text-color: #fff;
+  --primary-color: #0d6efd;
 }
-
-/* === Footer Styling === */
-
 /* === Reset === */
 * {
   margin: 0;
@@ -74,6 +85,12 @@ body {
   height: 7px;
 }
 
+/***** Custom Scrollbar Styling *****/
+::-webkit-scrollbar {
+  width: 10px;
+  height: 7px;
+}
+
 ::-webkit-scrollbar-track {
   background: var(--color-border);
   border-radius: 5px;
@@ -87,5 +104,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-dark);
+  background: #c62828;
 }

@@ -165,6 +165,7 @@
   background-color: var(--color-primary-dark);
 }
 
+/* Dropdown suggestions */
 .search-dropdown {
   position: absolute;
   top: 105%;
@@ -205,29 +206,7 @@
   }
 }
 
-/* ----------------- 5. Nav Icons ----------------- */
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.nav-icons .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  font-size: 1.4rem;
-  cursor: pointer;
-  position: relative;
-}
-
-.nav-icons .icon svg {
-  width: 20px;
-  height: 20px;
-}
-
+/* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;

@@ -20,7 +20,7 @@ const BannerSwitcher = () => {
     newSides[index] = mainImage;
     setMainImage(newMain);
     setSideImages(newSides);
-    setLoading(true);
+    setLoading(true); 
   };
 
   const handleNext = () => {
@@ -28,7 +28,7 @@ const BannerSwitcher = () => {
     const newSides = [...sideImages.slice(1), mainImage];
     setMainImage(newMain);
     setSideImages(newSides);
-    setLoading(true);
+    setLoading(true); 
   };
 
   const handlePrev = () => {
@@ -36,7 +36,7 @@ const BannerSwitcher = () => {
     const newSides = [mainImage, ...sideImages.slice(0, -1)];
     setMainImage(newMain);
     setSideImages(newSides);
-    setLoading(true);
+    setLoading(true); 
   };
 
   useEffect(() => {
@@ -45,19 +45,16 @@ const BannerSwitcher = () => {
       const newSides = [...sideImages.slice(1), mainImage];
       setMainImage(newMain);
       setSideImages(newSides);
-    }, 5000);
+    }, 5000); 
+
     return () => clearInterval(interval);
   }, [sideImages, mainImage]);
-
+  
   return (
     <Container>
       <div className="banner-section">
         <div className="main-banner">
-          {loading ? (
-            <div className="skeleton-banner" />
-          ) : (
-            <img src={mainImage} srcSet={`${mainImage}?w=600 600w, ${mainImage}?w=1200 1200w`} sizes="(max-width: 768px) 100vw, 70vw" alt="Main Banner" loading="eager" width="1200" height="675" />
-          )}
+          {loading ? <div className="skeleton-banner" /> : <img src={mainImage} alt="Main" loading="eager"  />}
 
           <button className="arrow left" onClick={handlePrev}>
             <FiChevronLeft />
@@ -70,7 +67,7 @@ const BannerSwitcher = () => {
         <div className="side-banners">
           {sideImages.map((img, i) => (
             <div key={i} className="side-image" onClick={() => handleSwap(i)}>
-              <img src={img} srcSet={`${img}?w=300 300w, ${img}?w=600 600w`} sizes="(max-width: 768px) 50vw, 30vw" alt={`Side Banner ${i + 1}`} loading="lazy" width="600" height="338" />
+              <img src={img} alt={`Side ${i + 1}`} />
             </div>
           ))}
         </div>

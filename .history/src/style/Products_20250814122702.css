@@ -1,6 +1,8 @@
 .products-container {
   padding: 3rem 2rem;
+  /* تكبير البادينج */
   max-width: 1400px;
+  /* تحديد عرض أقصى */
   margin: 0 auto;
   background-color: var(--color-background);
   font-family: 'Segoe UI', sans-serif;

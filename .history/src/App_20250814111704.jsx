@@ -82,7 +82,7 @@ const router = createBrowserRouter(
 const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.app.product);
-  const theme = useSelector((state) => state.theme.mode); 
+  const theme = useSelector((state) => state.theme.mode); // قراءة الثيم من Redux
 
   const saveCartToLocalStorage = useRef(
     debounce((cart) => {
@@ -91,6 +91,7 @@ const App = () => {
     []
   );
 
+  // حفظ السلة
   useEffect(() => {
     saveCartToLocalStorage.current(cart);
   }, [cart]);

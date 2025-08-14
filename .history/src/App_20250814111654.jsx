@@ -82,7 +82,7 @@ const router = createBrowserRouter(
 const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.app.product);
-  const theme = useSelector((state) => state.theme.mode); 
+  const theme = useSelector((state) => state.theme.mode); // قراءة الثيم من Redux
 
   const saveCartToLocalStorage = useRef(
     debounce((cart) => {
@@ -91,14 +91,17 @@ const App = () => {
     []
   );
 
+  // حفظ السلة
   useEffect(() => {
     saveCartToLocalStorage.current(cart);
   }, [cart]);
 
+  // تطبيق الثيم على مستوى الموقع
   useEffect(() => {
     document.body.setAttribute("data-theme", theme);
   }, [theme]);
 
+  // متابعة تسجيل الدخول
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {

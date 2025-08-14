@@ -1,4 +1,5 @@
-
+/* === Base Variables === */
+/* === Base Variables (Light Mode Default) === */
 :root {
   /* === Brand Colors === */
   --color-primary: #E53935;
@@ -43,7 +44,7 @@ body[data-theme="dark"] {
   --color-error: #dc3545;
   --color-error-dark: #a71d2a;
   --footer-text: #ffffff;
-  --footer-bg: #000000;
+  --footer-bg: #000000; 
 }
 
 /* === Footer Styling === */

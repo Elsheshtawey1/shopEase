@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { debounce } from "lodash";
-
 // Redux
 import { User } from "./redux/appSlice";
+import { useSelector } from "react-redux";
 
 //  API
 import { ProductData } from "./api/api";
@@ -27,7 +27,6 @@ import PaymentPage from "./page/PaymentPage";
 import ReviewPage from "./page/ReviewPage";
 import OrderConfirmation from "./page/OrderConfirmation";
 import Wishlist from "./components/Wishlist";
-
 // Lazy-loaded components
 const Contact = lazy(() => import("./page/Contact"));
 const AllProductsPage = lazy(() => import("./page/AllProductsPage"));
@@ -78,12 +77,9 @@ const router = createBrowserRouter(
     </Route>
   )
 );
-
 const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.app.product);
-  const theme = useSelector((state) => state.theme.mode); 
-
   const saveCartToLocalStorage = useRef(
     debounce((cart) => {
       localStorage.setItem("cart", JSON.stringify(cart));
@@ -94,10 +90,6 @@ const App = () => {
   useEffect(() => {
     saveCartToLocalStorage.current(cart);
   }, [cart]);
-
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -112,6 +104,10 @@ const App = () => {
         );
       }
     });
+      useEffect(() => {
+        document.body.setAttribute("data-theme", theme);
+      }, [theme]);
+
     return () => unsubscribe();
   }, [dispatch]);
 

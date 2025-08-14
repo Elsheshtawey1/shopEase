@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAuth, signOut } from "firebase/auth";
 import { logoutUser } from "../redux/appSlice";
-import { toggleTheme } from "../redux/themeSlice"; // استدعاء الـ Redux action
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -11,38 +10,41 @@ import { useTranslation } from "react-i18next";
 
 const MySwal = withReactContent(Swal);
 
-// Memoized OrderItem component
-const OrderItem = React.memo(({ order, onCancel, t }) => (
-  <li className="order-item">
-    <div>
-      <strong>
-        {t("order")} #{order.id}
-      </strong>{" "}
-      — {t("date")}: {order.date}
-    </div>
-    <div>
-      {t("total")}: ${order.totalPrice.toFixed(2)}
-    </div>
-    <div>
-      {t("shippingTo")}: {order.shippingAddress.city}, {order.shippingAddress.country}
-    </div>
-    <button className="btn-cancel-order" onClick={() => onCancel(order.id)}>
-      {t("cancelOrder")}
-    </button>
-  </li>
-));
+// Memoized OrderItem component to avoid unnecessary re-renders
+const OrderItem = React.memo(({ order, onCancel, t }) => {
+  return (
+    <li className="order-item">
+      <div>
+        <strong>
+          {t("order")} #{order.id}
+        </strong>{" "}
+        — {t("date")}: {order.date}
+      </div>
+      <div>
+        {t("total")}: ${order.totalPrice.toFixed(2)}
+      </div>
+      <div>
+        {t("shippingTo")}: {order.shippingAddress.city}, {order.shippingAddress.country}
+      </div>
+      <button className="btn-cancel-order" onClick={() => onCancel(order.id)}>
+        {t("cancelOrder")}
+      </button>
+    </li>
+  );
+});
 
 export default function ProfilePage() {
   const user = useSelector((state) => state.app.user);
-  const theme = useSelector((state) => state.theme.mode); // قراءة الثيم الجلوبل
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const theme = useSelector((state) => state.theme.mode);
 
   const { t, i18n } = useTranslation();
 
-  // تغيير اللغة
+  // تغيير اللغة وتحديث اتجاه الصفحة
   const selectLanguage = (lang) => {
     i18n.changeLanguage(lang);
     setShowLangMenu(false);
@@ -74,7 +76,7 @@ export default function ProfilePage() {
     });
   };
 
-  // Load user's orders
+  // Load user's orders from localStorage filtered by user email
   useEffect(() => {
     if (user?.email) {
       const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -105,6 +107,15 @@ export default function ProfilePage() {
     });
   };
 
+  // Toggle dark/light theme
+  const toggleTheme = () => {
+    setDarkMode((prev) => {
+      const newMode = !prev;
+      document.body.setAttribute("data-theme", newMode ? "dark" : "light");
+      return newMode;
+    });
+  };
+
   // Mask email
   const maskEmail = (email) => {
     if (!email) return t("notProvided");
@@ -114,7 +125,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className={`profile-page-container ${theme === "dark" ? "dark" : ""}`}>
+    <div className={`profile-page-container ${darkMode ? "dark" : ""}`}>
       {/* Header */}
       <header className="profile-header">
         <h1>{t("myProfile")}</h1>
@@ -136,10 +147,8 @@ export default function ProfilePage() {
             )}
           </div>
 
-          {/* Theme toggle button */}
-          <button onClick={() => dispatch(toggleTheme())} className="btn-theme-toggle">
-            {theme === "dark" ? "🌙 Dark" : "☀️ Light"}
-          </button>
+          {/* Theme toggle */}
+          <button onClick={() => dispatch(toggleTheme())}>{theme === "dark" ? "🌙 Dark" : "☀️ Light"}</button>
         </div>
       </header>
 

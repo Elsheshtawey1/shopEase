@@ -165,6 +165,7 @@
   background-color: var(--color-primary-dark);
 }
 
+/* Dropdown suggestions */
 .search-dropdown {
   position: absolute;
   top: 105%;
@@ -205,29 +206,7 @@
   }
 }
 
-/* ----------------- 5. Nav Icons ----------------- */
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.nav-icons .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  font-size: 1.4rem;
-  cursor: pointer;
-  position: relative;
-}
-
-.nav-icons .icon svg {
-  width: 20px;
-  height: 20px;
-}
-
+/* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;
@@ -262,6 +241,7 @@
 }
 
 /* ----------------- 7. Responsive ----------------- */
+/* للشاشات الصغيرة أقل من 768px */
 @media (max-width: 768px) {
   .navbar-container {
     flex-wrap: nowrap;
@@ -300,6 +280,7 @@
   }
 }
 
+/* للشاشات المتوسطة بين 768px و 1220px */
 @media (min-width: 768px) and (max-width: 1220px) {
   .navbar-container {
     padding: 0.5rem 1rem;
@@ -315,6 +296,7 @@
   }
 }
 
+/* للشاشات الصغيرة جداً أقل من 600px */
 @media (max-width: 600px) {
   .offer-bar {
     font-size: 0.8rem;
@@ -343,6 +325,7 @@
   }
 }
 
+/* لشاشات الموبايل الصغيرة جداً بين 350px و 450px */
 @media (min-width: 350px) and (max-width: 450px) {
   .navbar-container {
     padding: 8px 4px;

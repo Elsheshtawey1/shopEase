@@ -165,6 +165,7 @@
   background-color: var(--color-primary-dark);
 }
 
+/* Dropdown suggestions */
 .search-dropdown {
   position: absolute;
   top: 105%;
@@ -205,29 +206,7 @@
   }
 }
 
-/* ----------------- 5. Nav Icons ----------------- */
-.nav-icons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.nav-icons .icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  font-size: 1.4rem;
-  cursor: pointer;
-  position: relative;
-}
-
-.nav-icons .icon svg {
-  width: 20px;
-  height: 20px;
-}
-
+/* ----------------- 5. Right Icons ----------------- */
 .right-icons {
   display: flex;
   align-items: center;
@@ -265,7 +244,6 @@
 @media (max-width: 768px) {
   .navbar-container {
     flex-wrap: nowrap;
-    padding: 0.5rem 0.8rem;
   }
 
   .nav-links {
@@ -274,11 +252,10 @@
     align-items: stretch;
     background-color: var(--color-background);
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 0;
     width: 100%;
-    padding: 1rem;
-    gap: 0.8rem;
+    padding: 1rem 1.25rem;
     z-index: 999;
   }
 
@@ -288,30 +265,23 @@
 
   .search-bar {
     width: 100%;
-    margin: 0.5rem 0;
+    margin-left: 0.5rem;
+  }
+
+  .search-button {
+    right: -1px;
   }
 
   .menu-toggle {
     display: block;
   }
-
-  .right-icons {
-    gap: 0.6rem;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1220px) {
-  .navbar-container {
-    padding: 0.5rem 1rem;
-  }
-
   .search-bar {
-    width: 180px;
-    margin: 0;
-  }
-
-  .nav-links {
-    gap: 0.8rem;
+    width: 200px;
+    margin-left: 10px;
+    display: none;
   }
 }
 
@@ -320,35 +290,40 @@
     font-size: 0.8rem;
     flex-direction: column;
     padding: 0.3rem 1rem;
-    text-align: center;
   }
 
-  .social-icons-nav {
-    gap: 0.4rem;
-    padding: 4px 0;
+  .social-icons {
+    gap: 0.6rem;
+    padding: 5px 0;
+  }
+
+  .social-icons a {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0.9rem;
   }
 
   .icon {
-    font-size: 1.1rem;
     padding: 0;
+    font-size: 1.1rem;
   }
 
   .nav-links {
     top: 54px;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 10px 10px;
   }
 
   .right-icons {
-    gap: 0.5rem;
+    gap: 1rem;
   }
 }
 
 @media (min-width: 350px) and (max-width: 450px) {
   .navbar-container {
-    padding: 8px 4px;
+    padding: 10px 2px;
   }
 
   .right-icons {
-    gap: 0.4rem;
+    gap: 12px;
   }
 }

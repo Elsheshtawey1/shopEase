@@ -1,7 +1,10 @@
 .products-container {
   padding: 3rem 2rem;
+  /* تكبير البادينج */
   max-width: 1400px;
+  /* تحديد عرض أقصى */
   margin: 0 auto;
+  /* وسط الصفحة */
   background-color: var(--color-background);
   font-family: 'Segoe UI', sans-serif;
 }
@@ -73,6 +76,7 @@
   object-fit: contain;
 }
 
+/* زر Wishlist الخاص بكروت المنتجات فقط */
 .product-card .product-image-wrapper .product-wishlist-btn {
   position: absolute;
   top: 8px;
@@ -193,5 +197,6 @@
 
   .product-image-wrapper {
     height: 220px;
+    /* أكبر شوية في الموبايل برضه */
   }
 }
