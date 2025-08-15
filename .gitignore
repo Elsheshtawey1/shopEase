@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .env
 .a11y-changes.md
+.history
