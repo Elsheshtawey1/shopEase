@@ -50,9 +50,14 @@
   background-color: var(--color-card);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 8px var(--color-shadow);
+  box-shadow: 5px 9px 15px var(--color-shadow);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   height: 100%;
+}
+.product-card:hover{
+  transform: translateY(-5px);
+  box-shadow: -5px 10px 40px 18px var(--color-shadow);
+  transition: all 0.3s ease;
 }
 
 .product-image-wrapper {
@@ -191,6 +196,6 @@
   }
 
   .product-image-wrapper {
-    height: 220px;
+    height: 390px;
   }
 }

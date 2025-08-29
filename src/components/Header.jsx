@@ -15,6 +15,7 @@ const Navbar = () => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
   const searchRef = useRef(null);
+  const navLinksRef = useRef(null); // ref للـ nav-links
   const navigate = useNavigate();
 
   const searchValue = useSelector((state) => state.search);
@@ -77,12 +78,14 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
+      if (searchRef.current && !searchRef.current.contains(event.target) && navLinksRef.current && !navLinksRef.current.contains(event.target)) {
         dispatch(setSearch(""));
         setSuggestions([]);
         setHighlightedIndex(-1);
+        setMenuOpen(false); // نقفل المينيو لو مفتوح
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [dispatch]);
@@ -111,7 +114,7 @@ const Navbar = () => {
           <div className="navbar-container">
             <div className="logo">MyLogo</div>
 
-            <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+            <div className={`nav-links ${menuOpen ? "open" : ""}`} ref={navLinksRef}>
               <div className="search-bar" ref={searchRef}>
                 <input
                   type="text"
@@ -131,12 +134,7 @@ const Navbar = () => {
                 </button>
 
                 {suggestions.length > 0 && (
-                  <ul 
-                    id="search-suggestions"
-                    role="listbox" 
-                    className="search-dropdown"
-                    aria-label="Search suggestions"
-                  >
+                  <ul id="search-suggestions" role="listbox" className="search-dropdown" aria-label="Search suggestions">
                     {suggestions.map((item, index) => (
                       <li
                         key={item.id}
@@ -171,44 +169,24 @@ const Navbar = () => {
             </div>
 
             <div className="right-icons">
-              <NavLink 
-                to="/ProfilePage" 
-                className="icon profile-icon"
-                aria-label="My profile"
-              >
+              <NavLink to="/ProfilePage" className="icon profile-icon" aria-label="My profile">
                 <FiUser />
                 <span className="visually-hidden">My profile</span>
               </NavLink>
-              <NavLink 
-                to="/wishlist" 
-                className="icon wishlist-icon"
-                aria-label={`Wishlist (${wishlist.length} items)`}
-                aria-live="polite"
-              >
+              <NavLink to="/wishlist" className="icon wishlist-icon" aria-label={`Wishlist (${wishlist.length} items)`} aria-live="polite">
                 <FiHeart />
                 <span className="cart-count">{wishlist.length}</span>
                 <span className="visually-hidden">items in wishlist</span>
               </NavLink>
-              <NavLink 
-                to="/cart" 
-                className="icon"
-                aria-label={`Shopping cart (${cart.length} items)`}
-                aria-live="polite"
-              >
+              <NavLink to="/cart" className="icon" aria-label={`Shopping cart (${cart.length} items)`} aria-live="polite">
                 <FiShoppingCart />
                 <span className="cart-count">{cart.length}</span>
                 <span className="visually-hidden">items in cart</span>
               </NavLink>
 
-              <button 
-                className="menu-toggle" 
-                onClick={toggleMenu}
-                aria-expanded={menuOpen}
-                aria-controls="main-navigation"
-                aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              >
+              <button className="menu-toggle" onClick={toggleMenu} aria-expanded={menuOpen} aria-controls="main-navigation" aria-label={menuOpen ? "Close menu" : "Open menu"}>
                 {menuOpen ? <FiX /> : <FiMenu />}
-                <span className="visually-hidden">{menuOpen ? 'Close menu' : 'Open menu'}</span>
+                <span className="visually-hidden">{menuOpen ? "Close menu" : "Open menu"}</span>
               </button>
             </div>
           </div>
