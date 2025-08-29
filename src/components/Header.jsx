@@ -112,7 +112,7 @@ const Navbar = () => {
       <nav className="navbar" role="navigation" aria-label="Main navigation">
         <Container>
           <div className="navbar-container">
-            <div className="logo">MyLogo</div>
+            <div className="logo">Shop Easy</div>
 
             <div className={`nav-links ${menuOpen ? "open" : ""}`} ref={navLinksRef}>
               <div className="search-bar" ref={searchRef}>

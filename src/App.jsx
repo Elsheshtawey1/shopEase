@@ -46,7 +46,7 @@ const ProfilePage = lazy(() => import("./page/ProfilePage"));
 // ✅ Routes
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
+    <Route >
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} loader={ProductData} />
         <Route path="/cart" element={<Cart />} />
