@@ -3,12 +3,12 @@ import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 import "../style/layout.css";
 
+
 const Layout = () => {
   return (
     <div className="layout-container" role="document">
       {/* a11y: Header will contain the banner role and navigation */}
       <Header />
-      
       {/* a11y: Main content with role and ID for skip link target */}
       <main id="main-content" role="main" className="main-content">
         <Outlet />
