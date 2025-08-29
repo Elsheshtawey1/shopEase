@@ -15,7 +15,9 @@ const Contact = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+
       toast.success(t("message_sent_success"), { position: "bottom-right" });
+      e.target.reset();
     }, 1500);
   };
 
