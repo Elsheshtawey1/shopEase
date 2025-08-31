@@ -6,7 +6,6 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // ترجع أول الصفحة عند أي تغيير في المسار
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 
