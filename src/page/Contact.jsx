@@ -10,15 +10,39 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [selectedReason, setSelectedReason] = useState("");
 
-  const handleSubmit = (e) => {
+  const ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT_ID;
+
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
 
-      toast.success(t("message_sent_success"), { position: "bottom-right" });
-      e.target.reset();
-    }, 1500);
+    const formData = new FormData(e.target);
+
+    if (selectedReason) {
+      formData.append("reason", selectedReason);
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+
+      if (res.ok) {
+        toast.success(t("message_sent_success"), { position: "bottom-right" });
+        e.target.reset();
+        setSelectedReason("");
+      } else {
+        toast.error(t("message_sent_error"), { position: "bottom-right" });
+      }
+    } catch (error) {
+      toast.error(t("network_error"), { position: "bottom-right" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const reasons = [t("order_issue"), t("shipping_delay"), t("return_refund"), t("business_inquiry"), t("other")];
@@ -34,9 +58,9 @@ const Contact = () => {
       </div>
 
       <div className="contact-body">
-        <form className="contact-form" onSubmit={handleSubmit}>
-          <input type="text" placeholder={t("your_name")} required />
-          <input type="email" placeholder={t("your_email")} required />
+        <form className="contact-form" onSubmit={handleSubmit} aria-label={t("contact_form")} role="form">
+          <input type="text" name="name" placeholder={t("your_name")} required />
+          <input type="email" name="email" placeholder={t("your_email")} required />
 
           <div className="reason-options">
             {reasons.map((reason) => (
@@ -46,7 +70,10 @@ const Contact = () => {
             ))}
           </div>
 
-          <textarea placeholder={t("your_message")} rows="5" required></textarea>
+          {/* نخليها تبعت حتى لو المستخدم منساش يختار */}
+          <input type="hidden" name="reason" value={selectedReason} />
+
+          <textarea name="message" placeholder={t("your_message")} rows="5" required></textarea>
 
           <button type="submit" disabled={loading}>
             {loading ? (
