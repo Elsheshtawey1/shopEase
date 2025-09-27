@@ -15,7 +15,7 @@ const Navbar = () => {
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
   const searchRef = useRef(null);
-  const navLinksRef = useRef(null); // ref للـ nav-links
+  const navLinksRef = useRef(null); 
   const navigate = useNavigate();
 
   const searchValue = useSelector((state) => state.search);
@@ -82,7 +82,7 @@ const Navbar = () => {
         dispatch(setSearch(""));
         setSuggestions([]);
         setHighlightedIndex(-1);
-        setMenuOpen(false); // نقفل المينيو لو مفتوح
+        setMenuOpen(false);
       }
     };
 
